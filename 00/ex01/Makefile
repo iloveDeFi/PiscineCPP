@@ -6,12 +6,12 @@
 #    By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/01 13:45:23 by bbessard          #+#    #+#              #
-#    Updated: 2024/07/01 13:47:07 by bbessard         ###   ########.fr        #
+#    Updated: 2024/07/03 11:10:51 by bbessard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Nom de l'exécutable
-NAME = ex01
+NAME = PhoneBook
 
 # Compilateur et options de compilation
 CXX = g++
