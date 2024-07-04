@@ -6,7 +6,7 @@
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:42:35 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/04 14:14:46 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/04 18:12:31 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 #include <string>
 class Contact {
 private:
-    std::string _phone_number;
-    std::string _darkest_secret;
-    std::string _first_name;
-    std::string _last_name;
-    std::string _nickname;
+    std::string _firstName;
+    std::string _lastName;
+    std::string _nickName;
+    std::string _phoneNumber;
+    std::string _darkestSecret;
     int _index;
 
 public:

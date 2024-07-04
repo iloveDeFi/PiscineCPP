@@ -6,20 +6,20 @@
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:41:12 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/04 14:14:48 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/04 16:54:13 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <iomanip>
-#include "PhoneBook.hpp"
+#include "PhoneBook.class.hpp"
 #include "Contact.class.hpp"
 
 int main() {
     PhoneBook myPhoneBook;
     std::string command;
 
-    std::cout << "Bienvenue dans votre carnet d'adresses ! Utilisez les commandes ADD, SEARCH ou EXIT." << std::endl;
+    std::cout << "PhoneBook is open. Use ADD, SEARCH or EXIT." << std::endl;
 
     while (true) {
         std::cout << "Commande : ";
@@ -40,44 +40,20 @@ int main() {
             std::cin.ignore(); // Ignorer le newline restant dans le buffer
             std::getline(std::cin, darkestSecret);
 
-            Contact newContact(firstName, lastName, nickname, phoneNumber, darkestSecret);
-            myPhoneBook.addContact(newContact);
-
-        } else if (command == "SEARCH") {
-            myPhoneBook.displayContacts();
-
-            int index;
-            std::cout << "Entrez l'index du contact à afficher : ";
-            std::cin >> index;
-
-            if (std::cin.fail()) {
-                std::cerr << "Erreur : index invalide." << std::endl;
-                std::cin.clear();
-                std::cin.ignore(10000, '\n');
-                continue;
-            }
-
-            if (index >= 0 && index < myPhoneBook.getSize()) {
-                Contact contact = myPhoneBook.getContact(index);
-                std::cout << "Informations du contact :" << std::endl;
-                std::cout << "Prénom         : " << contact.getFirstName() << std::endl;
-                std::cout << "Nom de famille : " << contact.getLastName() << std::endl;
-                std::cout << "Surnom         : " << contact.getNickname() << std::endl;
-                std::cout << "Numéro de tel. : " << contact.getPhoneNumber() << std::endl;
-                std::cout << "Plus lourd secret : " << contact.getDarkestSecret() << std::endl;
-
+            if (firstName.empty() || lastName.empty() || nickname.empty() || phoneNumber.empty() || darkestSecret.empty()) {
+                std::cerr << "Erroritos, fields can't be emptitos." << std::endl;
             } else {
-                std::cerr << "Erreur : index hors de portée." << std::endl;
+                Contact newContact(firstName, lastName, nickname, phoneNumber, darkestSecret);
+                myPhoneBook.addContact(newContact);
             }
-
+         } else if (command == "SEARCH") {
+            myPhoneBook.search();
         } else if (command == "EXIT") {
             std::cout << "Au revoir !" << std::endl;
             break;
-
         } else {
-            std::cout << "Commande non reconnue. Utilisez ADD, SEARCH ou EXIT." << std::endl;
+            std::cerr << "Commande non reconnue. Utilisez ADD, SEARCH ou EXIT." << std::endl;
         }
     }
-
-    return 0;
+    return (0);
 }
