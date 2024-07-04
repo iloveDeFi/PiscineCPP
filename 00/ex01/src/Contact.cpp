@@ -6,7 +6,7 @@
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:41:46 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/04 18:15:02 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/04 18:34:15 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 // Constructor by default
 Contact::Contact()
-    : _phoneNumber(""), _darkestSecret(""), _firstName(""), _lastName(""), _nickName(""), _index(0) {
+    : _firstName(""), _lastName(""), _nickName(""), _phoneNumber(""), _darkestSecret(""), _currentIndex(0) {
 }
 
 // Constructor with parameters to init my members
 Contact::Contact(const std::string& firstName, const std::string& lastName, const std::string& nickname,
                  const std::string& phoneNumber, const std::string& darkestSecret, int index)
-    : _phoneNumber(phoneNumber), _darkestSecret(darkestSecret), _firstName(firstName),
-      _lastName(lastName), _nickName(nickname), _index(index) {
+    : _firstName(firstName), _lastName(lastName), _nickName(nickname),
+        _phoneNumber(phoneNumber), _darkestSecret(darkestSecret), _currentIndex(index) {
 }
 
 // My destructor
@@ -53,7 +53,7 @@ void Contact::setDarkestSecret(const std::string& darkestSecret) {
 }
 
 void Contact::setIndex(int index) {
-    _index = index;
+    _currentIndex = index;
 }
 
 // ------------- MY GETTERS -------------
@@ -78,5 +78,5 @@ std::string Contact::getDarkestSecret() const {
 }
 
 int Contact::getIndex() const {
-    return _index;
+    return _currentIndex;
 }

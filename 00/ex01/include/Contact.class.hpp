@@ -6,7 +6,7 @@
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:42:35 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/04 18:12:31 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/04 18:38:00 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ private:
     std::string _nickName;
     std::string _phoneNumber;
     std::string _darkestSecret;
-    int _index;
+    int _currentIndex;
 
 public:
     // My constructors here
     Contact();
     Contact(const std::string& firstName, const std::string& lastName, const std::string& nickname,
-            const std::string& phoneNumber, const std::string& darkestSecret, int index);
+            const std::string& phoneNumber, const std::string& darkestSecret, int currentIndex);
     ~Contact();
 
     // My Setters && Getters methods here
