@@ -3,53 +3,42 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+         #
+#    By: bat <bat@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/20 17:27:45 by bbessard          #+#    #+#              #
-#    Updated: 2024/07/01 14:13:46 by bbessard         ###   ########.fr        #
+#    Updated: 2024/07/04 10:52:54 by bat              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Nom de l'exécutable
-NAME = megaphone
+TARGET = megaphone
 
-# Compilateur et options de compilation
+# Compilateur à utiliser
 CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-# Répertoires
-SRCDIR = src
-OBJDIR = obj
-INCDIR = include
+# Options de compilation
+CXXFLAGS = -Wall -Wextra -std=c++98
 
-# Fichiers source et objets
-SRCS = $(wildcard $(SRCDIR)/*.cpp)
-OBJS = $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
+# Fichiers source
+SRC = megaphone.cpp
 
-# Règle par défaut
-all: $(NAME)
+# Fichiers objets (générés automatiquement)
+OBJ = $(SRC:.cpp=.o)
 
-# Compilation de l'exécutable
-$(NAME): $(OBJS)
+# Règle par défaut (ce qui est exécuté quand on tape 'make' sans argument)
+all: $(TARGET)
+
+# Règle pour créer l'exécutable
+$(TARGET): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-# Compilation des fichiers objets
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
-	$(CXX) $(CXXFLAGS) -I $(INCDIR) -o $@ -c $<
+# Règle pour compiler les fichiers objets
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Création du répertoire des objets
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
-
-# Nettoyage des fichiers compilés
+# Règle pour nettoyer les fichiers générés (on peut l'exécuter avec 'make clean')
 clean:
-	rm -rf $(OBJDIR)
+	rm -f $(OBJ) $(TARGET)
 
-fclean: clean
-	rm -f $(NAME)
-
-# Recompilation complète
-re: fclean all
-
-# Gestion des dépendances
-.PHONY: all clean fclean re
+# Indique que 'clean' n'est pas un fichier
+.PHONY: clean

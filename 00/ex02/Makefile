@@ -5,41 +5,40 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bat <bat@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/07/01 13:45:23 by bbessard          #+#    #+#              #
-#    Updated: 2024/07/04 14:16:18 by bat              ###   ########.fr        #
+#    Created: 2024/07/04 10:53:58 by bat               #+#    #+#              #
+#    Updated: 2024/07/04 10:59:21 by bat              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-TARGET = PhoneBook
+# Nom de l'exécutable
+TARGET = Account
+
+# Compilateur à utiliser
 CXX = g++
+
+# Options de compilation
 CXXFLAGS = -Wall -Wextra -std=c++98
-SRC_DIR = src
-INCLUDE_DIR = include
-BUILD_DIR = build
 
-# List of source files
-SRC = $(wildcard $(SRC_DIR)/*.cpp)
+# Fichiers source
+SRC = main.cpp
 
-# Generate list of object files in build directory
-OBJ = $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRC))
+# Fichiers objets (générés automatiquement)
+OBJ = $(SRC:.cpp=.o)
 
-# Default target
-all: $(BUILD_DIR) $(TARGET)
+# Règle par défaut (ce qui est exécuté quand on tape 'make' sans argument)
+all: $(TARGET)
 
-# Linking target
+# Règle pour créer l'exécutable
 $(TARGET): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-# Compiling source files into object files
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
-	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
+# Règle pour compiler les fichiers objets
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Create build directory if it doesn't exist
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
-
-# Clean target
+# Règle pour nettoyer les fichiers générés (on peut l'exécuter avec 'make clean')
 clean:
-	rm -rf $(BUILD_DIR) $(TARGET)
+	rm -f $(OBJ) $(TARGET)
 
-.PHONY: all clean
+# Indique que 'clean' n'est pas un fichier
+.PHONY: clean
