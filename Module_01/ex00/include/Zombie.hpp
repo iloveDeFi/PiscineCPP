@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:13:41 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/05 14:00:25 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:22:04 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define ZOMBIE_CLASS_HPP
 
 #include <iostream>
+#include <string>
 
 // USING CANONICAL FORM TO LEARN
 class Zombie {
