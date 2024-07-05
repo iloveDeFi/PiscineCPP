@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:41:46 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/04 18:34:15 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/05 13:53:33 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 // Constructor by default
 Contact::Contact()
-    : _firstName(""), _lastName(""), _nickName(""), _phoneNumber(""), _darkestSecret(""), _currentIndex(0) {
+    : _firstName(""), _lastName(""), _nickName(""), _phoneNumber(""),
+		_darkestSecret(""), _currentIndex(0) {
 }
 
 // Constructor with parameters to init my members
