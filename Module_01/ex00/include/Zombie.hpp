@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:13:41 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/05 14:22:04 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/08 11:52:13 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,18 @@
 # define ZOMBIE_CLASS_HPP
 
 #include <iostream>
-#include <string>
 
-// USING CANONICAL FORM TO LEARN
 class Zombie {
 	private:
 		std::string _name;
 
 	public:
-	// Constructors
-		Zombie( void );
-		Zombie( void ); // with parameters
-		// make 
-		~Zombie( void );
-
-	// Methods : setters and getters
-	void setName(const std::string& name);
-	std::string getName( void ) const;
-	std::string announce( void ) const;
+		// constructor
+		Zombie(void);
+		// destructor
+		~Zombie(void);
+		// Methods : setters and getters
+		void announce(void);
 };
 
 #endif

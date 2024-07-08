@@ -6,7 +6,7 @@
 #    By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/05 13:07:39 by bbessard          #+#    #+#              #
-#    Updated: 2024/07/05 13:11:39 by bbessard         ###   ########.fr        #
+#    Updated: 2024/07/08 11:39:21 by bbessard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,7 @@ INCLUDE_DIR = include
 BUILD_DIR = build
 
 # List of source files
-SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/Zombie.cpp $(SRC_DIR)/newZombie.cpp
-	$(SRC_DIR)/randomChump.cpp
+SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/Zombie.cpp $(SRC_DIR)/newZombie.cpp $(SRC_DIR)/randomChump.cpp
 
 # Generate list of object files in build directory
 OBJ = $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRC))

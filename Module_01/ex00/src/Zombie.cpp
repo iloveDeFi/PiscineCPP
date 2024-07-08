@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:12:19 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/05 14:31:19 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/08 11:49:27 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,14 @@
 
 #include "Zombie.hpp"
 
-// my constructor by default
-Zombie::Zombie( void ) {
-	std::cout << "Ow! A new Zombaby called " << this->_name << " is born." << std::endl;
+Zombie::Zombie(void) {
+	std::cout << " Constructor called for: " << this->_name<< std::endl;
 }
 
-
-Zombie::Zombie( void ) {
-
+Zombie::~Zombie(void) {
+	std::cout << " Zombie " << this->_name << " died." << std::endl;
 }
 
-// my destructor
-Zombie::~Zombie( void ) {
-	std::cout << "Zombie " << this->_name << " died." << std::endl;
-}
-
-// my setters
-void Zombie::setName(const std::string& name) {
-	_name = name;
-}
-
-// my getters
-std::string Zombie::getName( void ) const {
-	return _name;
-}
-
-// other methods = member function
-std::string announce( void ) {
-	std::cout << _name << " BraiiiiiiinnnzzzZ..." << std::endl;
+void Zombie::announce(void) {
+	std::cout << this->_name << " : BraiiiiiiinnnzzzZ..." << std::endl;
 }
