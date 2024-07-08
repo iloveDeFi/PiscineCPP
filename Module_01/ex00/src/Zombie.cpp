@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:12:19 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/08 11:49:27 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/08 14:53:41 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 
 #include "Zombie.hpp"
 
-Zombie::Zombie(void) {
+Zombie::Zombie(std::string name) {
+	this->_name = name;
 	std::cout << " Constructor called for: " << this->_name<< std::endl;
 }
 

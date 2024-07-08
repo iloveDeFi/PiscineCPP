@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:13:41 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/08 11:52:13 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/08 14:50:59 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 
 class Zombie {
 	private:
-		std::string _name;
+		std::string	_name;
 
 	public:
 		// constructor
-		Zombie(void);
+		Zombie(std::string name);
 		// destructor
 		~Zombie(void);
 		// Methods : setters and getters
