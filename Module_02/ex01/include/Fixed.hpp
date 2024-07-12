@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 18:42:20 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/11 18:58:34 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/12 11:44:11 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,17 @@ class Fixed {
         // A default constructor (can be in private if needed)
         Fixed(void);
 
-        // Const int parametric constructor
+        // Const INT parametric constructor
         Fixed(const int integer);
 
-        // Const int parametric constructor
+        // Const FLOAT parametric constructor
         Fixed(const float floatingNumber);
 
         // A copy constructor to copy class instance
-        Fixed(const Fixed& other);
+        Fixed(const Fixed &other);
 
         // A copy assignment operator overload.
-        Fixed& operator=(const Fixed& rhs);
+        Fixed& operator=(const Fixed &rhs);
 
          // Destructor (will need virtual later)
         ~Fixed(void);
@@ -55,11 +55,6 @@ class Fixed {
 };
 
 // Redirect stream on standard output good practice
-std::ostream&   operator<<(std::ostream& o, const Fixed& i);
-
-// TO DO :
-// An overload of the insertion («) operator that inserts a floating-point representation
-// of the fixed-point number into the output stream object passed as parameter.
-
+std::ostream&   operator<<(std::ostream &os, const Fixed &fixed);
 
 #endif
