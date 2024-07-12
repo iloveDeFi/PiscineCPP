@@ -6,7 +6,7 @@
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:50:23 by bat               #+#    #+#             */
-/*   Updated: 2024/07/12 16:36:35 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/12 17:48:18 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Fixed::Fixed(float const num) {
     this->_value = roundf(num * (1 << _bits));
 }
 
-// Copy constructor 
+// Copy constructor whre other is the reference to my existing obj. fixed
 Fixed::Fixed(const Fixed &other) : _value(other._value) {
 }
 
