@@ -6,7 +6,7 @@
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 18:42:20 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/12 11:44:11 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/12 13:22:08 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ class Fixed {
         Fixed(void);
 
         // Const INT parametric constructor
-        Fixed(const int integer);
+        Fixed(int const integer);
 
         // Const FLOAT parametric constructor
-        Fixed(const float floatingNumber);
+        Fixed(float const floatingNumber);
 
         // A copy constructor to copy class instance
         Fixed(const Fixed &other);
 
         // A copy assignment operator overload.
-        Fixed& operator=(const Fixed &rhs);
+        Fixed& operator=(const Fixed &other);
 
          // Destructor (will need virtual later)
         ~Fixed(void);
@@ -52,6 +52,10 @@ class Fixed {
 
         float toFloat(void) const;
         int toInt(void) const;
+
+        // Surcharge de l'opérateur <<
+        friend std::ostream&   operator<<(std::ostream &os,
+            const Fixed &fixed);
 };
 
 // Redirect stream on standard output good practice
