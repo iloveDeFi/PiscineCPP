@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:50:08 by bat               #+#    #+#             */
-/*   Updated: 2024/07/12 17:50:47 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/16 10:51:42 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,10 @@
 #include <iostream>
 #include <cmath>
 
-// Orthodox Canonical Form that represents a fixed-point number
-// Need 4 elements :
-// - Default constructor
-// - Copy constructor (new instance created)
-// - Copy assignement operator = (update current instance)
-// - Destructor with virtual
 class Fixed {
     private:
         int _value;
-        static const int _bits; // 8 bits after the virgule
+        static const int _bits;
 
     public:
         // A default constructor (can be in private if needed)
@@ -51,7 +45,7 @@ class Fixed {
         Fixed& operator--(void);   // Pré-décrémentation operator
         Fixed operator--(int value); // Post-décrémentation operator
         
-        // Opérateurs de comparaison
+        // Compare operators
         bool operator>(const Fixed& other) const;
         bool operator<(const Fixed& other) const;
         bool operator>=(const Fixed& other) const;
@@ -59,13 +53,13 @@ class Fixed {
         bool operator==(const Fixed& other) const;
         bool operator!=(const Fixed& other) const;
 
-        // Opérateurs arithmétiques
+        // Arithetic operators
         Fixed operator+(const Fixed& other) const;
         Fixed operator-(const Fixed& other) const;
         Fixed operator*(const Fixed& other) const;
         Fixed operator/(const Fixed& other) const;
 
-        // Fonctions statiques min et max
+        // Static functions min et max
         static Fixed& min(Fixed& a, Fixed& b);
         static const Fixed& min(const Fixed& a, const Fixed& b);
         static Fixed& max(Fixed& a, Fixed& b);
@@ -79,7 +73,7 @@ class Fixed {
         int toInt(void) const;
 };
 
-// Surcharge de l'opérateur <<        
+// Overload operator <<        
 std::ostream&   operator<<(std::ostream &os,
             const Fixed &fixed);
 

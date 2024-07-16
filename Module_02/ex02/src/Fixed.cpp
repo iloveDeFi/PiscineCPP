@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:50:23 by bat               #+#    #+#             */
-/*   Updated: 2024/07/12 18:02:52 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/16 11:03:47 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include <iostream>
 #include <cmath>
 
-// Static member initialization
-const int Fixed::_bits = 8; // 8 bits for the fractional part
+// Static member initialization of the fractional part
+const int Fixed::_bits = 8;
 
 // Default constructor
 Fixed::Fixed(void) : _value(0) {
@@ -26,9 +26,9 @@ Fixed::Fixed(int const integer) {
     this->_value = integer << this->_bits;
 }
 
-// Function to round float values (alternative to roundf for C++98)
+// Function to round float values using roundf from <cmath>
 static int roundToNearestInt(float num) {
-    return (num >= 0) ? static_cast<int>(num + 0.5f) : static_cast<int>(num - 0.5f);
+    return static_cast<int>(roundf(num));
 }
 
 // Parametric constructor with float

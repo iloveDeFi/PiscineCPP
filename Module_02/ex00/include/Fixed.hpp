@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 09:02:57 by bat               #+#    #+#             */
-/*   Updated: 2024/07/12 11:17:02 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/16 09:21:06 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 class Fixed {
     private:
         int _value;
-        static const int _bits = 8;
+        static const int _bits;
 
     public:
         // A default constructor (can be in private if needed)

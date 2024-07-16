@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 09:02:54 by bat               #+#    #+#             */
-/*   Updated: 2024/07/12 11:20:43 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/16 09:22:10 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
+
+// Define the static const variable
+const int Fixed::_bits = 8;
 
 // Default constructor 
 Fixed::Fixed(void) : _value(0) {
@@ -19,7 +22,7 @@ Fixed::Fixed(void) : _value(0) {
     return;
 }
 
-// Copy constructor object (init object dst from an object src)
+// Copy constructor object (init object dst from an object src &other)
 // Sample obj2 = obj1; Copied object with same values and states as src obj. 
 Fixed::Fixed(const Fixed &other) : _value(other._value) {
     std::cout << "Copy constructor called" << std::endl;

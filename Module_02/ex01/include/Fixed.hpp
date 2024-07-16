@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 18:42:20 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/12 13:22:08 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/16 09:55:17 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 class Fixed {
     private:
         int _value;
-        static const int _bits = 8;
+        static const int _bits;
 
     public:
         // A default constructor (can be in private if needed)
@@ -53,12 +53,9 @@ class Fixed {
         float toFloat(void) const;
         int toInt(void) const;
 
-        // Surcharge de l'opérateur <<
+        // Surcharge de l'opérateur << Redirect stream on standard output
         friend std::ostream&   operator<<(std::ostream &os,
-            const Fixed &fixed);
+			const Fixed &fixed);
 };
-
-// Redirect stream on standard output good practice
-std::ostream&   operator<<(std::ostream &os, const Fixed &fixed);
 
 #endif

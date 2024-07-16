@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 18:47:16 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/12 11:46:50 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/16 10:15:38 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 #include <cmath>
+
+const int Fixed::_bits = 8;
 
 // Default constructor 
 Fixed::Fixed(void) : _value(0) {
@@ -64,12 +66,12 @@ void Fixed::setRawBits(int const raw) {
 }
 
 int Fixed::toInt() const {
-    return this->_value >> _bits;
+    return this->_value >> this->_bits;
 }
 
 float Fixed::toFloat(void) const {
     // divison to get floating part
-    return static_cast<float>(_value) / (1 << _bits);
+    return static_cast<float>(this->_value) / (1 << this->_bits);
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& fixed) {
