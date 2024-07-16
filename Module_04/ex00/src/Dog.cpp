@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:06:14 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/16 15:54:57 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/16 16:08:13 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Dog::~Dog(void) {
 }
 
 Dog::Dog(const Dog &other) {
-	std::cout << "Dog " << this->type << " is copied." << std::endl;
+	std::cout << "A cool " << this->type << " is copied." << std::endl;
 	*this = other;
 
 }
@@ -34,14 +34,15 @@ Dog &Dog::operator=(const Dog &other) {
 		Dog::operator=(other);
 		this->type = other.type;
 	}
-	std::cout << "Dog " << this->type << "assigned." << std::endl;
+	std::cout << "A cool " << this->type << "assigned." << std::endl;
 	return *this;
 }
 
 void Dog::makeSound(void) const {
-	std::cout << "A Dog " << this->type << " made a wouf wouf" << std::endl;
+	std::cout << "A cool " << this->type << " made a wouf wouf" << std::endl;
 }
 
 std::string Dog::getType(void) const {
-	std::cout << "GetType function called " << this->type << " mew" << std::endl;
+	std::cout << "GetType function called for a : " << std::endl;
+	return this->type;
 }

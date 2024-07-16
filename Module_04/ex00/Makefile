@@ -6,7 +6,7 @@
 #    By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/16 14:25:55 by bbessard          #+#    #+#              #
-#    Updated: 2024/07/16 15:56:03 by bbessard         ###   ########.fr        #
+#    Updated: 2024/07/16 16:32:22 by bbessard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ BUILD_DIR = build
 
 # List of source files
 SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/Animal.cpp $(SRC_DIR)/Cat.cpp \
-$(SRC_DIR)/Dog.cpp 
+$(SRC_DIR)/Dog.cpp $(SRC_DIR)/WrongCat.cpp $(SRC_DIR)/WrongAnimal.cpp 
 
 # Generate list of object files in build directory
 OBJ = $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRC))
