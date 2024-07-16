@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:32:53 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/16 16:46:05 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/16 15:52:59 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 # define DOG_HPP
 
 class Dog : public Animal {
-	private:
-		const Brain *ideas;
 	protected: 
 		std::string type;
 	public: 

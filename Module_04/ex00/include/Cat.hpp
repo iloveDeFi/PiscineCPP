@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:31:50 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/16 15:52:34 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/16 16:45:57 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # define CAT_HPP
 
 class Cat : public Animal {
+	private:
+		const Brain *ideas;
 	protected: 
 		std::string type;
 	public: 

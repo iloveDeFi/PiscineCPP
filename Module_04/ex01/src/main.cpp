@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 14:27:55 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/16 16:44:16 by bbessard         ###   ########.fr       */
+/*   Created: 2024/07/16 16:44:36 by bbessard          #+#    #+#             */
+/*   Updated: 2024/07/16 16:49:59 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "Dog.hpp"
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
-
-// TO DO : NEED TO USE DELETE ?
 
 int main() {
 	
@@ -40,6 +38,10 @@ int main() {
 	
 	iWrong->makeSound(); // will NOT output the cat sound!
 	metaWrong->makeSound();
+	
+	delete meta;
+	delete j;
+	delete i;
 	
 	return (0);
 

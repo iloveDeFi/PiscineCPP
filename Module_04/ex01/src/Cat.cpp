@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:05:58 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/16 16:52:05 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/16 16:07:11 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,17 @@
 #include <string>
 
 Cat::Cat(void) : type("Cat") {
-	const Brain* newBrain = new Brain();
 	std::cout << "Cat constructor called." << std::endl;
 }
 
 Cat::~Cat(void) {
-	delete [] Brain;
 	std::cout << "Cat destructor called." << std::endl;
 }
 
 Cat::Cat(const Cat &other) {
 	std::cout << "A nice " << this->type << " is copied." << std::endl;
 	*this = other;
+
 }
 
 Cat &Cat::operator=(const Cat &other) {
