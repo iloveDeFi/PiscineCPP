@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bat <bat@student.42.fr>                    +#+  +:+       +#+         #
+#    By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/15 11:13:36 by bat               #+#    #+#              #
-#    Updated: 2024/07/15 11:14:13 by bat              ###   ########.fr        #
+#    Updated: 2024/07/17 10:32:33 by bbessard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 TARGET = ClapTrap
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRC_DIR = src
 INCLUDE_DIR = include
 BUILD_DIR = build

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 13:55:20 by bat               #+#    #+#             */
-/*   Updated: 2024/07/15 20:10:23 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/17 11:30:16 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,15 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &other) {
     return *this;
 }
 
-void ScavTrap::attack(std::string const &target) {
-    std::cout << "ScavTrap " << this->_name << " attacks " << target
-              << ", causing " << this->_damage << " points of damage!" << std::endl;
+void ScavTrap::attack(const std::string &target) {
+    if (this->_energy == 0 || this->_health == 0) {
+        std::cout << this->_name << " cant attack, no more battery or health."
+            << std::endl;
+        return;
+    }
+    this->_energy -= 10;
+    std::cout << "ClapTrap " << _name << " attacks " << target 
+		<< ", causing " << this->_damage << " points of damage!" << std::endl;
 }
 
 void ScavTrap::guardGate() {

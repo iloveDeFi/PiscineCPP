@@ -6,13 +6,13 @@
 #    By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/16 14:25:55 by bbessard          #+#    #+#              #
-#    Updated: 2024/07/16 16:32:22 by bbessard         ###   ########.fr        #
+#    Updated: 2024/07/17 10:15:12 by bbessard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 TARGET = Polymorph
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRC_DIR = src
 INCLUDE_DIR = include
 BUILD_DIR = build

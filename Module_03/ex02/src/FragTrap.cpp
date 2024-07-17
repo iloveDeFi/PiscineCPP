@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 20:13:56 by bat               #+#    #+#             */
-/*   Updated: 2024/07/15 20:24:11 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/17 11:36:07 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 #include <iostream>
+
+FragTrap::FragTrap() : ClapTrap() {
+	this->_health = 100;
+	this->_energy = 100;
+	this->_damage = 30;
+	std::cout << "FragTrap " << this->_name << " is awake!" << std::endl;
+}
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
     this->_health = 100;
@@ -27,7 +34,6 @@ FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other) {
 
 FragTrap::~FragTrap() {
     std::cout << "FragTrap " << this->_name << " explosed!" << std::endl;
-    // Automatically calls base class destructor
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &other) {

@@ -3,17 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 11:15:20 by bat               #+#    #+#             */
-/*   Updated: 2024/07/15 14:15:56 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/17 11:19:40 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include <iostream>
 
-// ClapTrap object needs energy and health to take action
+// Default constructor
+ClapTrap::ClapTrap(void) :
+	_name("ClapTrap"), 
+	_health(10),
+	_energy(10),
+	_damage(0) {
+	std::cout << "ClapTrap " << _name << " default constructed." << std::endl;
+}
 
 // Parametric constructor with my initializer list
 ClapTrap::ClapTrap(std::string name) :
@@ -33,11 +40,6 @@ ClapTrap::ClapTrap(const ClapTrap &other) :
     std::cout << "ClapTrap " << _name << " copy constructed." << std::endl;
 }
 
-// Destructor
-ClapTrap::~ClapTrap(void) {
-    std::cout << "ClapTrap " << _name << " destructed." << std::endl;
-}
-
 // Overloard assignement operator 
 ClapTrap& ClapTrap::operator=(const ClapTrap &other) {
     if (this != &other) {
@@ -51,23 +53,22 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &other) {
     return *this;
 }
 
+// Destructor
+ClapTrap::~ClapTrap(void) {
+    std::cout << "ClapTrap " << _name << " destructed." << std::endl;
+}
 
-// Target lose <attack damage>
-// Cost 1 energy point
+// Target lose <attack damage>. Cost 1 energy point
 void ClapTrap::attack(const std::string &target) {
-    // checks
     if (this->_energy == 0 || this->_health == 0) {
         std::cout << this->_name << " cant attack, no more battery or health."
             << std::endl;
         return;
     }
-    // cost of energy
     this->_energy -= 1;
-    // print message
     std::cout << "ClapTrap " << _name << " attacks " << target << std::endl;
 }
 
-// 
 void ClapTrap::takeDamage(unsigned int amount) {
     this->_health -= amount;
     if (this->_health < 0)
@@ -76,20 +77,15 @@ void ClapTrap::takeDamage(unsigned int amount) {
         << " points of damage" << std::endl;
 }
 
-// Repair <amount> of hit points back
-// Cost 1 energy point
+// Repair <amount> of hit points back. Cost 1 energy point
 void ClapTrap::beRepaired(unsigned int amount) {
-    // checks
     if (this->_energy == 0 || this->_health == 0) {
         std::cout << this->_name << " cant repair, no more battery or health."
             << std::endl;
         return;
     }
-    // cost of energy
     this->_energy -= 1;
-    // effect
     this->_health += amount;
-    // print message
     std::cout << "ClapTrap " << _name << " repaired himself of "
         << amount << " energy points!" << std::endl;
 }

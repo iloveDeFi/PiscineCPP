@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 11:15:20 by bat               #+#    #+#             */
-/*   Updated: 2024/07/15 13:35:50 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/17 10:40:23 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,14 @@
 
 // ClapTrap object needs energy and health to take action
 
-
+// Default constructor
+ClapTrap::ClapTrap(void) :
+	_name("default"), 
+	_health(10),
+	_energy(10),
+	_damage(0) {
+	std::cout << "ClapTrap " << _name << " default constructed." << std::endl;
+}
 
 // Parametric constructor with my initializer list
 ClapTrap::ClapTrap(std::string name) :
@@ -57,19 +64,15 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &other) {
 // Target lose <attack damage>
 // Cost 1 energy point
 void ClapTrap::attack(const std::string &target) {
-    // checks
     if (this->_energy == 0 || this->_health == 0) {
         std::cout << this->_name << " cant attack, no more battery or health."
             << std::endl;
         return;
     }
-    // cost of energy
     this->_energy -= 1;
-    // print message
     std::cout << "ClapTrap " << _name << " attacks " << target << std::endl;
 }
 
-// 
 void ClapTrap::takeDamage(unsigned int amount) {
     this->_health -= amount;
     if (this->_health < 0)
@@ -81,17 +84,13 @@ void ClapTrap::takeDamage(unsigned int amount) {
 // Repair <amount> of hit points back
 // Cost 1 energy point
 void ClapTrap::beRepaired(unsigned int amount) {
-    // checks
     if (this->_energy == 0 || this->_health == 0) {
         std::cout << this->_name << " cant repair, no more battery or health."
             << std::endl;
         return;
     }
-    // cost of energy
     this->_energy -= 1;
-    // effect
     this->_health += amount;
-    // print message
     std::cout << "ClapTrap " << _name << " repaired himself of "
         << amount << " energy points!" << std::endl;
 }

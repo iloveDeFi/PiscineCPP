@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 20:14:28 by bat               #+#    #+#             */
-/*   Updated: 2024/07/15 20:19:46 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/17 11:35:24 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 class FragTrap : public ClapTrap {
     public:
         // Canonical form
+		FragTrap(void);
         FragTrap(std::string name);
         FragTrap(const FragTrap &other);
         virtual ~FragTrap(void);

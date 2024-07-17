@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 11:15:34 by bat               #+#    #+#             */
-/*   Updated: 2024/07/15 20:06:02 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/17 11:25:53 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int main()
     std::cout << "--------------ATTACKING PHASE--------------" << std::endl;
     robot1.attack("Jerry");
     robot2.takeDamage(20);
+	robot1.displayInfos();
     robot2.displayInfos();
     
     std::cout << "--------------REPAIRING PHASE--------------" << std::endl;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 13:41:40 by bat               #+#    #+#             */
-/*   Updated: 2024/07/15 19:56:36 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/17 11:30:25 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ class ClapTrap {
         // Canonical form
         ClapTrap(std::string name);
         ClapTrap(const ClapTrap &other);
-        virtual ~ClapTrap(void);
         ClapTrap &operator=(const ClapTrap &other);
+		virtual ~ClapTrap(void);
 
         // Public member functions
-        void attack(const std::string &target);
+        virtual void attack(const std::string &target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
         void displayInfos(void) const;
