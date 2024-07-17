@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 20:13:56 by bat               #+#    #+#             */
-/*   Updated: 2024/07/17 11:36:07 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/17 13:15:56 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other) {
 }
 
 FragTrap::~FragTrap() {
-    std::cout << "FragTrap " << this->_name << " explosed!" << std::endl;
+    std::cout << "FragTrap " << this->_name << " annihilated!" << std::endl;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &other) {

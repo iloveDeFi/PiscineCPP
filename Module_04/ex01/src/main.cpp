@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 16:44:36 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/16 16:49:59 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/17 13:58:51 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,29 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
+// Exercise purpose = Deep Copy Vs Shallow Copy
+// Dog and Cat copies must be Deep Copies
+
 int main() {
+	std::cout << "--------------COPY CASE----------------" << std::endl;
+	const int totalAnimal = 10;
+	Animal* animals[totalAnimal];
+	
+    for (int i = 0; i < totalAnimal / 2; ++i) {
+        animals[i] = new Dog();
+    }
+	
+    for (int i = totalAnimal / 2; i < totalAnimal; ++i) {
+        animals[i] = new Cat();
+    }
+
+    for (int i = 0; i < totalAnimal; ++i) {
+        animals[i]->makeSound();
+    }
+
+    for (int i = 0; i < totalAnimal; ++i) {
+        delete animals[i];
+    }
 	
 	std::cout << "--------------TRUE CASE----------------" << std::endl;
 	const Animal* meta = new Animal();

@@ -6,15 +6,18 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:31:50 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/16 15:52:34 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/17 13:59:57 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Brain.hpp"
 #include "Animal.hpp"
 #ifndef CAT_HPP
 # define CAT_HPP
 
 class Cat : public Animal {
+	private:
+    	Brain* _brain;
 	protected: 
 		std::string type;
 	public: 

@@ -6,12 +6,19 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 13:55:20 by bat               #+#    #+#             */
-/*   Updated: 2024/07/17 11:30:16 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/17 13:15:15 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 #include <iostream>
+
+ScavTrap::ScavTrap(void) : ClapTrap() {
+	this->_health = 100;
+	this->_energy = 50;
+	this->_damage = 20;
+	std::cout << "ScavTrap " << this->_name << " is born!" << std::endl;
+}
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
     this->_health = 100;
@@ -27,7 +34,6 @@ ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other) {
 
 ScavTrap::~ScavTrap() {
     std::cout << "ScavTrap " << this->_name << " is destroyed!" << std::endl;
-    // Automatically calls base class destructor
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &other) {

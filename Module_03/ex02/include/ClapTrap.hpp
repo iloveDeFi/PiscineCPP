@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 13:41:40 by bat               #+#    #+#             */
-/*   Updated: 2024/07/17 11:30:25 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/17 13:11:37 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class ClapTrap {
 
     public:
         // Canonical form
+		ClapTrap(void);
         ClapTrap(std::string name);
         ClapTrap(const ClapTrap &other);
         ClapTrap &operator=(const ClapTrap &other);
