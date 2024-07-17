@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 16:10:29 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/16 16:35:15 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/17 20:24:51 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void WrongAnimal::makeSound(void) const {
 }
 
 std::string WrongAnimal::getType(void) const {
+	std::cout << "Nope virtual is missing, polymorphism failed: " << std::endl;
 	return this->type;
 }

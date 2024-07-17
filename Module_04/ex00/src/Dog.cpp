@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:06:14 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/16 16:08:13 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/17 20:20:52 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 #include <string>
 
 Dog::Dog(void) : type("Dog") {
-	std::cout << "Dog constructor called." << std::endl;
+	std::cout << this->type << " constructor called." << std::endl;
 }
 
 Dog::~Dog(void) {
-	std::cout << "Dog destructor called." << std::endl;
+	std::cout << this->type << " destructor called." << std::endl;
 }
 
 Dog::Dog(const Dog &other) {
@@ -43,6 +43,6 @@ void Dog::makeSound(void) const {
 }
 
 std::string Dog::getType(void) const {
-	std::cout << "GetType function called for a : " << std::endl;
+	std::cout << "This beast is a : " << std::endl;
 	return this->type;
 }

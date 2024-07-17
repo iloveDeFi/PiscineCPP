@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:28:13 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/16 15:28:09 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/17 20:24:41 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,13 @@ Animal &Animal::operator=(const Animal &other) {
 		Animal::operator=(other);
 		this->type = other.type;
 	}
-	std::cout << "Animal " << this->type << "assigned." << std::endl;
+	std::cout << "Animal " << this->type << " assigned." << std::endl;
 	return *this;
 }
 
 void Animal::makeSound(void) const {
-	std::cout << "An animal made a strange noise." << std::endl;
+	std::cout << "An animal " << this->type << " made a strange noise."
+		<< std::endl;
 }
 
 std::string Animal::getType(void) const {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:05:58 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/16 16:52:05 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/17 20:21:10 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@
 #include <string>
 
 Cat::Cat(void) : type("Cat") {
-	const Brain* newBrain = new Brain();
-	std::cout << "Cat constructor called." << std::endl;
+	std::cout << this->type << " constructor called." << std::endl;
 }
 
 Cat::~Cat(void) {
-	delete [] Brain;
-	std::cout << "Cat destructor called." << std::endl;
+	std::cout << this->type << "destructor called." << std::endl;
 }
 
 Cat::Cat(const Cat &other) {
@@ -44,6 +42,6 @@ void Cat::makeSound(void) const {
 }
 
 std::string Cat::getType(void) const {
-	std::cout << "GetType function called for a :" << std::endl;
+	std::cout << "This creature is a :" << std::endl;
 	return this->type;
 }
