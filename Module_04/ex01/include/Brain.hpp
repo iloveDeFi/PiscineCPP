@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 08:45:50 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/17 14:13:35 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/17 21:11:06 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@
 #include <iostream>
 #include <string>
 
-class Brain {
-	private:
-		std::string _ideas[100];
-		
+class Brain {		
 	protected: 
 		std::string type;
 		
 	public:
+		std::string _ideas[100];
 		Brain(void);
 		Brain(const Brain &other);
 		Brain &operator=(const Brain &other);

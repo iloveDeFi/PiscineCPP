@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:28:13 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/16 15:28:09 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/17 21:18:28 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,13 @@ Animal::~Animal(void) {
 }
 
 Animal::Animal(const Animal &other) {
-	std::cout << "Animal " << this->type << " is copied." << std::endl;
+	std::cout << "Animal copy constructor called." << std::endl;
 	*this = other;
 
 }
 
 Animal &Animal::operator=(const Animal &other) {
 	if (this != &other) {
-		Animal::operator=(other);
 		this->type = other.type;
 	}
 	std::cout << "Animal " << this->type << "assigned." << std::endl;

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:32:53 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/17 14:00:17 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/17 21:50:17 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Brain.hpp"
-#include "Animal.hpp"
 #ifndef DOG_HPP
 # define DOG_HPP
 
+#include "Brain.hpp"
+#include "Animal.hpp"
 class Dog : public Animal {
 	private:
     	Brain* _brain;
@@ -25,8 +25,8 @@ class Dog : public Animal {
 		Dog(const Dog &other);
 		Dog &operator=(const Dog &other);
 		virtual ~Dog(void);
-		void makeSound(void) const;
-		std::string getType(void) const;
+		virtual void makeSound(void) const;
+		virtual std::string getType(void) const;
 };
 
 #endif

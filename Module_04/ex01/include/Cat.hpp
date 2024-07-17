@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:31:50 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/17 13:59:57 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/17 21:52:05 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class Cat : public Animal {
 		Cat(const Cat &other);
 		Cat &operator=(const Cat &other);
 		virtual ~Cat(void);
-		void makeSound(void) const;
-		std::string getType(void) const;
+		virtual void makeSound(void) const;
+		virtual std::string getType(void) const;
 };
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:05:58 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/17 14:10:08 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/17 21:59:06 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ Cat::Cat(void) : _brain(new Brain()), type("Cat") {
 	std::cout << "Cat constructor called." << std::endl;
 }
 
-Cat::Cat(const Cat& other) : _brain(new Brain(*other._brain)) {
-    std::cout << "Cat copied!" << std::endl;
+Cat::Cat(const Cat& other) : Animal(other), _brain(new Brain(*other._brain)) {
+    std::cout << "Cat copied with copy constructor!" << std::endl;
 }
 
 Cat &Cat::operator=(const Cat &other) {
@@ -29,6 +29,7 @@ Cat &Cat::operator=(const Cat &other) {
         *_brain = *other._brain;
     }
 	std::cout << "A nice " << this->type << "assigned." << std::endl;
+	this->_brain = new Brain(*other._brain);
 	return *this;
 }
 
