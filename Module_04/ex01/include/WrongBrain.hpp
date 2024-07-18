@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   WrongBrain.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 14:44:53 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/18 13:11:56 by bbessard         ###   ########.fr       */
+/*   Created: 2024/07/18 13:07:34 by bbessard          #+#    #+#             */
+/*   Updated: 2024/07/18 13:08:01 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-# define WRONGANIMAL_HPP
+#ifndef WRONGBRAIN_HPP
+# define WRONGBRAIN_HPP
 
-#include <iostream>
+#include "Animal.hpp"
 #include <string>
+#include <iostream>
 
-class WrongAnimal {
-	protected: 
-		std::string type;
+class WrongBrain {
 	public: 
-		WrongAnimal(void);
-		WrongAnimal(const std::string &type);
-		WrongAnimal(const WrongAnimal &other);
-		WrongAnimal &operator=(const WrongAnimal &other);
-		virtual ~WrongAnimal(void);
-		void makeSound(void) const; // not virtual for my tests
-		std::string getType(void) const; // not virtual for my tests
+		std::string ideas[100];
+		WrongBrain(void);
+		WrongBrain(const WrongBrain &other);
+		WrongBrain &operator=(const WrongBrain &other);
+		virtual ~WrongBrain(void);
+		// void printIdeasCount() const;
 };
 
 #endif

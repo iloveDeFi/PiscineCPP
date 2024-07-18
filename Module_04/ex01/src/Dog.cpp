@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:06:14 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/18 11:50:29 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/18 13:38:55 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ Dog::Dog(const std::string &type) : Animal(type), _brain(new Brain()) {
 }
 
 // Copy Constructor
-Dog::Dog(const Dog &other) : Animal(other) {
-	std::cout << "A cool " << this->type << " is copied today." << std::endl;
+Dog::Dog(const Dog &other) : Animal(other), _brain(new Brain(*other._brain)) {
+	std::cout << this->type << " copied with copy constructor!" << std::endl;
 }
 
 // Assignment operator

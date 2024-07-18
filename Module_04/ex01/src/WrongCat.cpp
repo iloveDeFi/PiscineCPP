@@ -12,16 +12,19 @@
 
 #include "WrongCat.hpp"
 #include "Animal.hpp"
+#include "WrongBrain.hpp"
 #include <iostream>
 #include <string>
 
-WrongCat::WrongCat(void) : WrongAnimal("WrongCat") {
-	std::cout << "WrongCat constructor called." << std::endl;
+WrongCat::WrongCat(void) : WrongAnimal("WrongCat"),
+	_wrongBrain(new WrongBrain()) {
+		std::cout << "WrongCat constructor called." << std::endl;
 }
 
 // Parametric constructor
-WrongCat::WrongCat(const std::string &type) : WrongAnimal(type) {
-    std::cout << "WrongCat parametric constructor called." << std::endl;
+WrongCat::WrongCat(const std::string &type) : WrongAnimal(type),
+	_wrongBrain(new WrongBrain()) {
+    	std::cout << "WrongCat parametric constructor called." << std::endl;
 }
 
 WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other) {
@@ -37,6 +40,7 @@ WrongCat &WrongCat::operator=(const WrongCat &other) {
 }
 
 WrongCat::~WrongCat(void) {
+	delete _wrongBrain;
 	std::cout << "WrongCat destructor called." << std::endl;
 }
 

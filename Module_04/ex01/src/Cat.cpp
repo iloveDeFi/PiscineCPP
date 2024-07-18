@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:05:58 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/18 11:49:58 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/18 13:39:13 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ Cat::Cat(const std::string &type) : Animal(type), _brain(new Brain()) {
 }
 
 // Copy construcotr
-Cat::Cat(const Cat &other) : Animal(other) {
-	std::cout << "A nice " << this->type << " is copied today." << std::endl;
+Cat::Cat(const Cat &other) : Animal(other), _brain(new Brain(*other._brain)){
+	std::cout << this->type << " copied with copy constructor!" << std::endl;
 }
 
 // Copy assignement operator
