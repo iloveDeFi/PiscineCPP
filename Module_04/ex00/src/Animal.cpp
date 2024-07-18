@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:28:13 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/17 20:24:41 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/18 10:19:28 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,36 @@
 #include <iostream>
 #include <string>
 
+// Default constructor
 Animal::Animal(void) : type("Animal") {
 	std::cout << "Animal constructor called." << std::endl;
 }
 
-Animal::~Animal(void) {
-	std::cout << "Animal destructor called." << std::endl;
+// Parametric constructor
+Animal::Animal(const std::string &type) : type(type) {
+    std::cout << "Animal parametric constructor called." << std::endl;
 }
 
-Animal::Animal(const Animal &other) {
+// Coopy constructor
+Animal::Animal(const Animal &other) : type(other.type) {
 	std::cout << "Animal " << this->type << " is copied." << std::endl;
-	*this = other;
-
 }
 
+// Copy assignement operator
 Animal &Animal::operator=(const Animal &other) {
 	if (this != &other) {
-		Animal::operator=(other);
 		this->type = other.type;
 	}
 	std::cout << "Animal " << this->type << " assigned." << std::endl;
 	return *this;
 }
 
+// Destructor 
+Animal::~Animal(void) {
+	std::cout << "Animal destructor called." << std::endl;
+}
+
+// Methods, getters, setters:
 void Animal::makeSound(void) const {
 	std::cout << "An animal " << this->type << " made a strange noise."
 		<< std::endl;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:27:55 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/17 20:09:01 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/18 10:37:10 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int main() {
 	const WrongAnimal* metaWrong = new WrongAnimal();
 	const WrongAnimal* iWrong = new WrongCat();
 
+	std::cout << metaWrong->getType() << " " << std::endl;
 	std::cout << iWrong->getType() << " " << std::endl;
 	
 	iWrong->makeSound(); // will NOT output the cat sound!

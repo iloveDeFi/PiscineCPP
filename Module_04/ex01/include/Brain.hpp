@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 08:45:50 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/18 07:38:27 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/18 08:10:12 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ class Brain {
 		Brain(const Brain &other);
 		Brain &operator=(const Brain &other);
 		virtual ~Brain(void);
-		// virtual void makeSound(void) const;
-		// virtual std::string getType(void) const;
 };
 
 #endif

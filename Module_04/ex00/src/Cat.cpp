@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:05:58 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/17 20:21:10 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/18 10:27:45 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,36 @@
 #include <iostream>
 #include <string>
 
-Cat::Cat(void) : type("Cat") {
+// Default constructor
+Cat::Cat(void) : Animal("Cat") {
 	std::cout << this->type << " constructor called." << std::endl;
 }
 
+// Parametric constructor
+Cat::Cat(const std::string &type) : Animal(type) {
+    std::cout << "Cat parametric constructor called." << std::endl;
+}
+
+// Copy construcotr
+Cat::Cat(const Cat &other) : Animal(other) {
+	std::cout << "A nice " << this->type << " is copied today." << std::endl;
+}
+
+// Copy assignement operator
+Cat &Cat::operator=(const Cat &other) {
+    if (this != &other) {
+		this->type = other.type;
+    }
+    std::cout << "Cat assignment operator called." << std::endl;
+    return *this;
+}
+
+// Destructor
 Cat::~Cat(void) {
 	std::cout << this->type << "destructor called." << std::endl;
 }
 
-Cat::Cat(const Cat &other) {
-	std::cout << "A nice " << this->type << " is copied." << std::endl;
-	*this = other;
-}
-
-Cat &Cat::operator=(const Cat &other) {
-	if (this != &other) {
-		Cat::operator=(other);
-		this->type = other.type;
-	}
-	std::cout << "A nice " << this->type << "assigned." << std::endl;
-	return *this;
-}
-
+// Methods, getters, setters:
 void Cat::makeSound(void) const {
 	std::cout << "A nice " << this->type << " made a meow meow" << std::endl;
 }

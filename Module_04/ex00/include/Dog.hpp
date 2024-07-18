@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:32:53 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/17 20:04:46 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/18 10:22:17 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
 #ifndef DOG_HPP
 # define DOG_HPP
 
+#include "Animal.hpp"
+
 class Dog : public Animal {
-	protected: 
-		std::string type;
 	public: 
 		Dog(void);
+		Dog(const std::string &type);
 		Dog(const Dog &other);
 		Dog &operator=(const Dog &other);
 		virtual ~Dog(void);

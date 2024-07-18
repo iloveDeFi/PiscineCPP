@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:31:50 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/17 19:53:45 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/18 10:22:06 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
 #ifndef CAT_HPP
 # define CAT_HPP
 
+#include "Animal.hpp"
+
 class Cat : public Animal {
-	protected: 
-		std::string type;
 	public: 
 		Cat(void);
+		Cat(const std::string &type);
 		Cat(const Cat &other);
 		Cat &operator=(const Cat &other);
 		virtual ~Cat(void);
