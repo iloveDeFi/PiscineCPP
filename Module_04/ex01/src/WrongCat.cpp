@@ -12,10 +12,11 @@
 
 #include "WrongCat.hpp"
 #include "Animal.hpp"
+#include "Brain.hpp"
 #include <iostream>
 #include <string>
 
-WrongCat::WrongCat(void) : type("WrongCat") {
+WrongCat::WrongCat(void) : _brain(new Brain()), type("WrongCat") {
 	std::cout << "WrongCat constructor called." << std::endl;
 }
 

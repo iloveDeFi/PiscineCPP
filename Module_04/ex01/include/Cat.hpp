@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:31:50 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/17 21:52:05 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/18 07:33:12 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Brain.hpp"
-#include "Animal.hpp"
 #ifndef CAT_HPP
 # define CAT_HPP
+
+#include "Brain.hpp"
+#include "Animal.hpp"
 
 class Cat : public Animal {
 	private:

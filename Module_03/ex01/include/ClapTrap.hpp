@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 13:41:40 by bat               #+#    #+#             */
-/*   Updated: 2024/07/17 11:18:42 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/17 15:35:58 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class ClapTrap {
 		virtual ~ClapTrap(void);
 
         // Public member functions
-        virtual void attack(const std::string &target);
+        void attack(const std::string &target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
         void displayInfos(void) const;

@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 16:44:36 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/17 13:58:51 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/18 07:50:13 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ int main() {
 	j->makeSound();
 	meta->makeSound();
 	
+	delete meta;
+	delete j;
+	delete i;
+	
 	std::cout << "--------------WRONG CASE----------------" << std::endl;
 	const WrongAnimal* metaWrong = new WrongAnimal();
 	const WrongAnimal* iWrong = new WrongCat();
@@ -60,10 +64,9 @@ int main() {
 	
 	iWrong->makeSound(); // will NOT output the cat sound!
 	metaWrong->makeSound();
-	
-	delete meta;
-	delete j;
-	delete i;
+
+	delete metaWrong;
+	delete iWrong;
 	
 	return (0);
 
