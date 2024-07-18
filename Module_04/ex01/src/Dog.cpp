@@ -3,41 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:06:14 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/17 20:41:50 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/18 11:50:29 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 #include "Animal.hpp"
-#include "Brain.hpp"
 #include <iostream>
 #include <string>
 
-Dog::Dog(void) : _brain(new Brain()), type("Dog") {
-	std::cout << "Dog constructor called." << std::endl;
+// Default Constructor
+Dog::Dog(void) : Animal("Dog"), _brain(new Brain()) {
+	std::cout << this->type << " constructor called." << std::endl;
 }
 
-Dog::Dog(const Dog& other) : Animal(other), _brain(new Brain(*other._brain)) {
-    std::cout << "Dog copied!" << std::endl;
+// Parametric constructor
+Dog::Dog(const std::string &type) : Animal(type), _brain(new Brain()) {
+    std::cout << "Dog parametric constructor called." << std::endl;
 }
 
-// Opérateur d'affectation
+// Copy Constructor
+Dog::Dog(const Dog &other) : Animal(other) {
+	std::cout << "A cool " << this->type << " is copied today." << std::endl;
+}
+
+// Assignment operator
 Dog& Dog::operator=(const Dog &other) {
     if (this != &other) {
-        Animal::operator=(other); // Copier les attributs de la classe de base
-        delete _brain; // Libérer la mémoire actuelle
-        _brain = new Brain(*other._brain); // Allouer et copier
-        this->type = other.type;
+		this->type = other.type;
     }
+    std::cout << "A cool " << this->type << " copy assigned." << std::endl;
     return *this;
 }
 
+// Destructor virtual
 Dog::~Dog(void) {
 	delete _brain;
-	std::cout << "Dog destructor called." << std::endl;
+	std::cout << this->type << " destructor called." << std::endl;
 }
 
 void Dog::makeSound(void) const {
@@ -45,6 +50,6 @@ void Dog::makeSound(void) const {
 }
 
 std::string Dog::getType(void) const {
-	std::cout << "GetType function called for a : " << std::endl;
+	std::cout << "This beast is a : " << std::endl;
 	return this->type;
 }

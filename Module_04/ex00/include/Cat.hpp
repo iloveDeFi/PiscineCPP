@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:31:50 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/18 10:22:06 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/18 10:46:01 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CAT_HPP
 
 #include "Animal.hpp"
+#include <string>
+#include <iostream>
 
 class Cat : public Animal {
 	public: 

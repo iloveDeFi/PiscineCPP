@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:43:46 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/18 10:25:31 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/18 10:46:24 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define WRONGCAT_HPP
 
 #include "WrongAnimal.hpp"
+#include <iostream>
 #include <string>
 
 class WrongCat : public WrongAnimal {

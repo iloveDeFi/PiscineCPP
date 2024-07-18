@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 16:10:29 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/16 16:35:15 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/18 10:34:55 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 
 WrongAnimal::WrongAnimal(void) : type("WrongAnimal") {
 	std::cout << "WrongAnimal constructor called." << std::endl;
+}
+
+// Parametric constructor
+WrongAnimal::WrongAnimal(const std::string &type) : type(type) {
+    std::cout << "WrongAnimal parametric constructor called." << std::endl;
 }
 
 WrongAnimal::~WrongAnimal(void) {
@@ -42,5 +47,6 @@ void WrongAnimal::makeSound(void) const {
 }
 
 std::string WrongAnimal::getType(void) const {
+	std::cout << "This is a mean : " << std::endl;
 	return this->type;
 }

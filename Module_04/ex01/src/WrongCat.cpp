@@ -12,31 +12,32 @@
 
 #include "WrongCat.hpp"
 #include "Animal.hpp"
-#include "Brain.hpp"
 #include <iostream>
 #include <string>
 
-WrongCat::WrongCat(void) : _brain(new Brain()), type("WrongCat") {
+WrongCat::WrongCat(void) : WrongAnimal("WrongCat") {
 	std::cout << "WrongCat constructor called." << std::endl;
 }
 
-WrongCat::~WrongCat(void) {
-	std::cout << "WrongCat destructor called." << std::endl;
+// Parametric constructor
+WrongCat::WrongCat(const std::string &type) : WrongAnimal(type) {
+    std::cout << "WrongCat parametric constructor called." << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &other) {
+WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other) {
 	std::cout << "A nice " << this->type << " is copied." << std::endl;
-	*this = other;
-
 }
 
 WrongCat &WrongCat::operator=(const WrongCat &other) {
 	if (this != &other) {
-		WrongCat::operator=(other);
 		this->type = other.type;
 	}
 	std::cout << "A nice " << this->type << "assigned." << std::endl;
 	return *this;
+}
+
+WrongCat::~WrongCat(void) {
+	std::cout << "WrongCat destructor called." << std::endl;
 }
 
 void WrongCat::makeSound(void) const {
@@ -44,6 +45,6 @@ void WrongCat::makeSound(void) const {
 }
 
 std::string WrongCat::getType(void) const {
-	std::cout << "GetType function called for a :" << std::endl;
+	std::cout << "It's a strange :" << std::endl;
 	return this->type;
 }

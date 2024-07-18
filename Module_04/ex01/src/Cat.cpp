@@ -3,46 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:05:58 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/17 21:59:06 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/18 11:49:58 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Animal.hpp"
-#include "Brain.hpp"
 #include <iostream>
 #include <string>
 
-Cat::Cat(void) : _brain(new Brain()), type("Cat") {
+// Default constructor
+Cat::Cat(void) : Animal("Cat"), _brain(new Brain()) {
 	std::cout << "Cat constructor called." << std::endl;
 }
 
-Cat::Cat(const Cat& other) : Animal(other), _brain(new Brain(*other._brain)) {
-    std::cout << "Cat copied with copy constructor!" << std::endl;
+// Parametric constructor
+Cat::Cat(const std::string &type) : Animal(type), _brain(new Brain()) {
+    std::cout << "Cat parametric constructor called." << std::endl;
 }
 
+// Copy construcotr
+Cat::Cat(const Cat &other) : Animal(other) {
+	std::cout << "A nice " << this->type << " is copied today." << std::endl;
+}
+
+// Copy assignement operator
 Cat &Cat::operator=(const Cat &other) {
-	if (this != &other) {
-        *_brain = *other._brain;
+    if (this != &other) {
+		this->type = other.type;
     }
-	std::cout << "A nice " << this->type << "assigned." << std::endl;
-	this->_brain = new Brain(*other._brain);
-	return *this;
+    std::cout << "Cat assignment operator called." << std::endl;
+    return *this;
 }
 
+// Destructor
 Cat::~Cat(void) {
 	delete _brain;
-	std::cout << "Cat destructor called." << std::endl;
+	std::cout << this->type << "destructor called." << std::endl;
 }
 
+// Methods, getters, setters:
 void Cat::makeSound(void) const {
 	std::cout << "A nice " << this->type << " made a meow meow" << std::endl;
 }
 
 std::string Cat::getType(void) const {
-	std::cout << "GetType function called for a :" << std::endl;
+	std::cout << "This creature is a :" << std::endl;
 	return this->type;
 }

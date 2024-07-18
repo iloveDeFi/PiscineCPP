@@ -3,41 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 16:39:10 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/17 21:14:55 by bat              ###   ########.fr       */
+/*   Created: 2024/07/18 10:44:43 by bbessard          #+#    #+#             */
+/*   Updated: 2024/07/18 11:43:32 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
 #include "Brain.hpp"
+#include <iostream>
+#include <string>
 
 // Default constructor
-Brain::Brain(void) : type("Brain") {
-	std::cout << "Brain constructor called" << std::endl;
+Brain::Brain(void) {
+	std::cout << "Brain constructor called." << std::endl;
 }
 
-// Copy constructor
+// Copy construcotr
 Brain::Brain(const Brain &other) {
-	std::cout << "Brain obj. copied properly." << std::endl;
-	*this = other;
+	std::cout << "Brain copy constructor called." << std::endl;
+	for (int i = 0; i < 100; ++i) {
+        this->ideas[i] = other.ideas[i];
+    }
 }
 
-// Assignement operator
-Brain& Brain::operator=(const Brain &other) {
+// Copy assignement operator
+Brain &Brain::operator=(const Brain &other) {
     if (this != &other) {
-        for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 100; ++i) {
             this->ideas[i] = other.ideas[i];
         }
-		this->type = other.type;
-    }
-	std::cout << "Brain content assigned to another obj." << std::endl;
+	}
+    std::cout << "Brain assignment operator called." << std::endl;
     return *this;
 }
 
 // Destructor
 Brain::~Brain(void) {
-	std::cout << "Brain destructor called properly." << std::endl;
+	std::cout << "Brain destructor called." << std::endl;
 }
