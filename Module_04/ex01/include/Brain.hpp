@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 10:44:54 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/18 13:07:58 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/19 23:31:42 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ class Brain {
 		Brain(const Brain &other);
 		Brain &operator=(const Brain &other);
 		virtual ~Brain(void);
-		// void printIdeasCount() const;
 };
 
 #endif
