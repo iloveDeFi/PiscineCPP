@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 08:49:38 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/19 16:15:45 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/19 21:51:10 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMATERIASOURCE_HPP
 # define IMATERIASOURCE_HPP
 
-#include "AMateria.hpp"
 #include <string>
 #include <iostream>
 

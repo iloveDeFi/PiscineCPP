@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 14:37:21 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/19 11:22:42 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/19 23:21:51 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ Cure::Cure(Cure const &other) : AMateria(other) {
 }
 
 Cure& Cure::operator=(Cure const &other) {
-	std::cout << "Cure copy assignment operator called" << std::endl;
-	if (this != &other) {
-		this->type = other.type
-	}
+	std::cout << "Assigned from " << other.getType() << std::endl;
 	return *this;
 }
 

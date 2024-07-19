@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 14:34:18 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/19 11:22:44 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/19 23:22:52 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ Ice::Ice(Ice const &other) : AMateria(other) {
 
 Ice	&Ice::operator=(Ice const &other)
 {
-	std::cout << "Ice copy assignment operator called" << std::endl;
-	if (this != &other) {
-		this->type = other.type
-	}
+	std::cout << "Assigned from " << other.getType() << std::endl;
 	return *this;
 }
 

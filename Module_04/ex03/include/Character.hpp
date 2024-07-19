@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 14:51:41 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/19 16:32:24 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/19 22:38:53 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
-
 class Character : public ICharacter {
 	private:
 		std::string	_name;

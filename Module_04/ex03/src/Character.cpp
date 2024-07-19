@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 14:52:10 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/19 16:30:26 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/19 23:19:47 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "AMateria.hpp"
 #include "Character.hpp"
 #include <string>
 #include <iostream>
@@ -21,7 +22,7 @@ Character::Character(void) : _name("default") {
 }
 
 // Parametric constructor
-Character::Character(std::string const & name) : _name(_name) {
+Character::Character(std::string const & name) : _name(name) {
 	std::cout << "Character default constructor called" << std::endl;
     initInventory();
 }

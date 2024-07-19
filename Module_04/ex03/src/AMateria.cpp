@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 14:13:26 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/19 17:02:00 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/19 23:19:02 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
-// Constructor by default
 AMateria::AMateria(void) : type("default") {
 	std::cout << "AMateria default constructor called" << std::endl;
 }
 
-// Parametric constructor
 AMateria::AMateria(const std::string &type) : type(type) {
 	std::cout << "AMateria parametric constructor called" << std::endl;
 }
@@ -29,9 +28,10 @@ AMateria::AMateria(const AMateria &other) : type(other.type) {
 
 // Copy assignment operator
 AMateria& AMateria::operator=(const AMateria &other) {
-	std::cout << "AMateria copy assignment operator called" << std::endl;
-	if (this != &other)
-		this->type = other.type;
+	if (this != &other) {
+		// type is const, wont change after init
+		std::cout << "AMateria copy assignment operator called" << std::endl;
+	}
 	return *this;
 }
 
@@ -48,28 +48,4 @@ std::string const &AMateria::getType() const {
 void AMateria::use(ICharacter& target) {
     std::cout << "using materia on " << target.getName()
 		<< " *" << std::endl;
-}
-
-void	MateriaSource::learnMateria(AMateria *m)
-{
-	for (size_t i = 0; i < SOURCE_SIZE; i++)
-	{
-		if (!materia_source[i])
-		{
-			materia_source[i] = m;
-			return ;
-		}
-	}
-}
-
-AMateria*	MateriaSource::createMateria(std::string const & type)
-{
-	size_t	i;
-
-	for (i = 0; i < SOURCE_SIZE; i++)
-	{
-		if (materia_source[i] && materia_source[i]->getType() == type)
-			return (materia_source[i]->clone());
-	}
-	return (NULL);
 }
