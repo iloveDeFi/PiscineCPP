@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 14:13:27 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/19 16:20:08 by bbessard         ###   ########.fr       */
+/*   Created: 2024/07/19 08:55:31 by bbessard          #+#    #+#             */
+/*   Updated: 2024/07/19 16:32:33 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-# define AMATERIA_HPP
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
 #include <string>
 #include <iostream>
-#include "ICharacter.hpp"
+#include "IMateriaSource.hpp"
 
-class AMateria
-{
+class MateriaSource : public IMateriaSource {
 	protected:
-		std::string const type;
+		std::string type;
 		
 	public:
-		AMateria(void);
-		AMateria(const std::string &type);
-		AMateria(const AMateria &other);
-		AMateria &operator=(const AMateria &other);
-		virtual ~AMateria(void);
-
+		MateriaSource(void);
+		MateriaSource(const std::string &type);
+		MateriaSource(const MateriaSource &other);
+		MateriaSource &operator=(const MateriaSource &other);
+		virtual ~MateriaSource(void);
 		std::string const & getType() const;
-
-		virtual AMateria* clone() const = 0;
+		virtual MateriaSource* clone() const = 0;
 		virtual void use(ICharacter& target);
 };
 

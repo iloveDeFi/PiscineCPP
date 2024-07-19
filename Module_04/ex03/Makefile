@@ -6,11 +6,11 @@
 #    By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/18 14:11:43 by bbessard          #+#    #+#              #
-#    Updated: 2024/07/18 16:10:54 by bbessard         ###   ########.fr        #
+#    Updated: 2024/07/19 15:01:02 by bbessard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-TARGET = Polymorph
+TARGET = Materia
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRC_DIR = src
@@ -19,7 +19,7 @@ BUILD_DIR = build
 
 # List of source files
 SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/AMateria.cpp $(SRC_DIR)/Character.cpp \
-$(SRC_DIR)/Cure.cpp $(SRC_DIR)/Ice.cpp
+$(SRC_DIR)/Cure.cpp $(SRC_DIR)/Ice.cpp $(SRC_DIR)/MateriaSource.cpp \
 
 # Generate list of object files in build directory
 OBJ = $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRC))

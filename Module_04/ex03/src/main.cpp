@@ -6,16 +6,15 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 14:11:37 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/18 15:20:12 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/19 16:35:25 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 #include "Cure.hpp"
 #include "Ice.hpp"
-
-#include <string>
-#include <iostream>
+#include "Character.hpp"
+#include "MateriaSource.hpp"
 
 int main()
 {
