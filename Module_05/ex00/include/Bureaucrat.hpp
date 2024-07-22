@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:59:12 by bat               #+#    #+#             */
-/*   Updated: 2024/07/20 16:11:02 by bat              ###   ########.fr       */
+/*   Updated: 2024/07/22 14:46:51 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,42 @@
 # define BUREAUCRAT_HPP
 
 #include <string>
+#include <iostream>
+#include <stdexcept>
 
 class Bureaucrat {
+
     private :
-        const std::string name;
-        // 1 is highet and 150 lowest
-        int grade;
+        const std::string _name;
+        int _grade;
     public:
+	
+		class GradeTooHighException : public std::exception {
+		public :
+			virtual const char* what() const throw() {
+				return ("Grade is too HIGH.");
+			}
+		};
+
+		class GradeTooLowException : public std::exception {
+			public :
+				virtual const char* what() const throw() {
+					return ("Grade is too LOW.");
+				}
+		};
+		
         Bureaucrat(void);
-        Bureaucrat(std::string name);
+        Bureaucrat(const std::string name, int grade);
         Bureaucrat(const Bureaucrat &src);
         Bureaucrat &operator=(const Bureaucrat &src);
         ~Bureaucrat(void);
-        void getName() const;
-        void getGrade() const;
-        void increGrade();
-        void decreGrade();
+		
+        std::string getName() const;
+        int getGrade() const;
+        void incrementGrade();
+        void decrementGrade();
 };
 
-You will provide an overload of the <<operator to ostream that outputs something
-like <name>, bureaucrat grade <grade>
+std::ostream& operator<<(std::ostream &o, Bureaucrat const &other);
 
 #endif
