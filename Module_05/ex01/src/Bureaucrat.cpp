@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:58:20 by bat               #+#    #+#             */
-/*   Updated: 2024/07/23 11:04:57 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/23 11:50:27 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 // Default constructor
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {
-	std::cout << "DEfault constructor called." << std::endl;
+	std::cout << "Bureaucrat DEfault constructor called." << std::endl;
 }
 
 // Parametric constructor
@@ -27,12 +27,12 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(
 	else if (grade > 150) {
 		throw GradeTooLowException();
 	}
-	std::cout << "Param construcor called." << std::endl;
+	std::cout << "Bureaucrat Param construcor called." << std::endl;
 }
 
 // Copy constructor
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name), _grade(other._grade) {
-	std::cout << "Copy constructor called." << std::endl;
+	std::cout << "Bureaucrat Copy constructor called." << std::endl;
 }
 
 // Copy assignement operator

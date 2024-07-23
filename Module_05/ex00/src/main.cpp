@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:58:27 by bat               #+#    #+#             */
-/*   Updated: 2024/07/23 11:23:55 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/23 11:36:46 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <stdexcept>
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 
 int main() {
 	std::cout << "----------LOW TEST----------" << std::endl;
@@ -42,13 +41,6 @@ int main() {
     } catch (const Bureaucrat::GradeTooLowException &e) {
         std::cerr << e.what() << std::endl;
     }
-	std::cout << "----------EX01 TEST----------" << std::endl;
-	Bureaucrat samsam("SamSam", 50);
-    Form formA("FormA", 45, 100);
-	Form formB("FormB", 0, 100);
-
-    samsam.signForm(formA);
-	samsam.signForm(formB);
 
     return 0;
 }
