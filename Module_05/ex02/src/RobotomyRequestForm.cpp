@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 10:15:44 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/25 10:27:30 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/25 14:46:00 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src)
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &src) {
     if (this != &src) {
-        Form::operator=(src);
+        AForm::operator=(src);
         _target = src._target;
     }
     return *this;
@@ -34,7 +34,10 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &s
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
 void RobotomyRequestForm::execute(const Bureaucrat &executor) const {
-    checkExecutability(executor);
+    if (!isSigned())
+        throw FormNotSignedException();
+    if (executor.getGrade() > getGradeToExecute())
+        throw GradeTooLowException();
     std::cout << "Drilling noises... ";
     if (std::rand() % 2) {
         std::cout << _target << " has been robotomized successfully." << std::endl;

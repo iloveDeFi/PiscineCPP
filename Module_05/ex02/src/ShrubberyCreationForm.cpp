@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 10:16:12 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/25 10:27:08 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/25 14:45:29 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src)
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &src) {
     if (this != &src) {
-        Form::operator=(src);
+        AForm::operator=(src);
         _target = src._target;
     }
     return *this;
@@ -30,7 +30,10 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
-    checkExecutability(executor);
+    if (!isSigned())
+        throw FormNotSignedException();
+    if (executor.getGrade() > getGradeToExecute())
+        throw GradeTooLowException();
     std::ofstream ofs(_target + "_shrubbery");
     if (ofs) {
         ofs << "       _-_\n";

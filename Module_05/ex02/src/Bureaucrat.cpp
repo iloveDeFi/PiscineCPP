@@ -6,18 +6,13 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:58:20 by bat               #+#    #+#             */
-/*   Updated: 2024/07/25 10:52:20 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/25 14:07:27 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <stdexcept>
-
-// // Default constructor
-// Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {
-// 	std::cout << "Bureaucrat DEfault constructor called." << std::endl;
-// }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade) {
 	if (grade < 1) {
@@ -67,7 +62,7 @@ void Bureaucrat::decrementGrade() {
 
 void Bureaucrat::signForm(AForm &aform) const {
     try {
-        form.beSigned(*this);
+        aform.beSigned(*this);
         std::cout << this->_name << " signed " << aform.getName() << std::endl;
     } catch (const std::exception &e) {
         std::cout << this->_name << " couldn't sign " << aform.getName() 
@@ -77,10 +72,10 @@ void Bureaucrat::signForm(AForm &aform) const {
 
 void Bureaucrat::executeForm(AForm const &aform) const {
 	try {
-		form.execute(*this);
-		std::cout << _name << " executed " << aform.getName() << std::endl;
+		aform.execute(*this);
+		std::cout << this->_name << " executed " << aform.getName() << std::endl;
 	} catch (std::exception &e) {
-		std::cerr << _name << " could not execute " << aform.getName() << " because " << e.what() << std::endl;
+		std::cerr << this->_name << " could not execute " << aform.getName() << " because " << e.what() << std::endl;
 	}
 }
 

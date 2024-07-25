@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 14:53:55 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/25 10:59:57 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/25 14:32:33 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ std::string AForm::getName() const {
 	return this->_name;
 }
 
-bool AForm::getSigned() const {
+bool AForm::isSigned() const {
 	return this->_isSigned;
 }
 
@@ -65,17 +65,9 @@ void AForm::beSigned(const Bureaucrat &bureaucrat) {
 	this->_isSigned = true;
 }
 
-void AForm::execute(const Bureaucrat &executor) const {
-    if (!this->_isSigned)
-        throw FormNotSignedException();
-    if (executor.getGrade() > this->_gradeToExecute)
-        throw GradeTooLowException();
-    executeAction();
-}
-
 std::ostream& operator<<(std::ostream &o, AForm const &aform) {
     o << "AForm " << aform.getName() << " requires grade " << aform.getGradeToSign() 
       << " to sign and grade " << aform.getGradeToExecute() << " to execute. Signed status: "
-      << (aform.getSigned() ? "Signed" : "Not signed");
+      << (aform.isSigned() ? "Signed" : "Not signed");
     return o;
 }

@@ -30,17 +30,16 @@ class AForm {
 	public:
 		AForm(const std::string &name, int gradeToSign, int gradeToExecute);
 		AForm(const AForm &other);
+
 		AForm& operator=(const AForm &other);
 		~AForm(void);
 
 		std::string getName() const;
-		bool getSigned() const;
 		int getGradeToSign() const;
-		int getGradeToExecute() const;
-		
 		void beSigned(const Bureaucrat &bureaucrat);
 		virtual void execute(const Bureaucrat &executor) const = 0;
-		// virtual void executeAction() const = 0;
+		bool isSigned() const;
+		int getGradeToExecute() const;
         
 		class GradeTooHighException : public std::exception {
             public:

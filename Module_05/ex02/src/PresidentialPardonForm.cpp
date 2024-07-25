@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 10:15:21 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/25 10:28:53 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/25 14:46:55 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 #include <iostream>
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
-    : Form("Presidential Pardon", 25, 5), _target(target) {}
+    : AForm("Presidential Pardon", 25, 5), _target(target) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &src)
-    : Form(src), _target(src._target) {}
+    : AForm(src), _target(src._target) {}
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm &src) {
     if (this != &src) {
-        Form::operator=(src);
+        AForm::operator=(src);
         _target = src._target;
     }
     return *this;
@@ -30,6 +30,9 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 PresidentialPardonForm::~PresidentialPardonForm() {}
 
 void PresidentialPardonForm::execute(const Bureaucrat &executor) const {
-    checkExecutability(executor);
+    if (!isSigned())
+        throw FormNotSignedException();
+    if (executor.getGrade() > getGradeToExecute())
+        throw GradeTooLowException();
     std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
