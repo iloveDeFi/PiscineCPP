@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:59:12 by bat               #+#    #+#             */
-/*   Updated: 2024/07/23 11:32:32 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/25 08:52:15 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ class Bureaucrat {
         int getGrade() const;
         void incrementGrade();
         void decrementGrade();
+        
 		void signForm(Form &form) const;
 };
 

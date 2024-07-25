@@ -6,17 +6,17 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:58:20 by bat               #+#    #+#             */
-/*   Updated: 2024/07/22 14:42:29 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/25 08:32:12 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include <stdexcept>
 
-// Default constructor
-Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {
-	std::cout << "DEfault constructor called." << std::endl;
-}
+// // Default constructor
+// Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {
+// 	std::cout << "DEfault constructor called." << std::endl;
+// }
 
 // Parametric constructor
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade) {

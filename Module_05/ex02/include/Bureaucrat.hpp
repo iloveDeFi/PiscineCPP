@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:59:12 by bat               #+#    #+#             */
-/*   Updated: 2024/07/25 08:43:45 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/25 09:50:32 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <string>
 #include <iostream>
 #include <stdexcept>
+
+class AForm;
 
 class Bureaucrat {
 
@@ -38,16 +40,18 @@ class Bureaucrat {
 				}
 		};
 		
-        // Bureaucrat(void);
+        Bureaucrat(void);
         Bureaucrat(const std::string name, int grade);
         Bureaucrat(const Bureaucrat &src);
-        Bureaucrat &operator=(const Bureaucrat &src);
+        Bureaucrat& operator=(const Bureaucrat &src);
         ~Bureaucrat(void);
 		
         std::string getName() const;
         int getGrade() const;
         void incrementGrade();
         void decrementGrade();
+        
+		void signForm(Form &form) const;
 };
 
 std::ostream& operator<<(std::ostream &o, Bureaucrat const &other);
