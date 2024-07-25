@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:58:27 by bat               #+#    #+#             */
-/*   Updated: 2024/07/25 10:46:15 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/25 14:50:58 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@
 #include "PresidentialPardonForm.hpp"
 
 int main() {
-    std::cout << "----------TEST EXECUTE----------" << std::endl;
+    std::cout << "----------EX02 TEST EXECUTE----------" << std::endl;
 
     Bureaucrat bureaucrat("Alex", 30);
 
     std::cout << "-----Test ShrubberyCreationFOrm-----" << std::endl;
     try {
-        ShrubberyCreationForm shrubberyForm("Bat");
+        ShrubberyCreationForm shrubberyForm("(A)");
         bureaucrat.signForm(shrubberyForm);
         bureaucrat.executeForm(shrubberyForm);
     } catch (std::exception &e) {
@@ -35,7 +35,7 @@ int main() {
 
     std::cout << "-----Test RobotomyRequestForm-----" << std::endl;
     try {
-        RobotomyRequestForm robotomyForm("Charles");
+        RobotomyRequestForm robotomyForm("(B)");
         bureaucrat.signForm(robotomyForm);
         bureaucrat.executeForm(robotomyForm);
     } catch (std::exception &e) {
@@ -44,7 +44,7 @@ int main() {
 
     std::cout << "-----Test PresidentialPardonForm-----" << std::endl;
     try {
-        PresidentialPardonForm pardonForm("Damso");
+        PresidentialPardonForm pardonForm("(C)");
         bureaucrat.signForm(pardonForm);
         bureaucrat.executeForm(pardonForm);
     } catch (std::exception &e) {
