@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardoForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 09:55:50 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/25 10:11:48 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/25 10:49:10 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 #include "AForm.hpp"
 
-class PresidentialPardoForm : public AForm {
+class PresidentialPardonForm : public AForm {
     
     private:
         std::string _target;
 
     public:
-        PresidentialPardoForm(const std::string &target);
-        PresidentialPardoForm(const PresidentialPardoForm &src);
-        PresidentialPardoForm& operator=(const PresidentialPardoForm &src);
-        ~PresidentialPardoForm();
+        PresidentialPardonForm(const std::string &target);
+        PresidentialPardonForm(const PresidentialPardonForm &src);
+        PresidentialPardonForm& operator=(const PresidentialPardonForm &src);
+        ~PresidentialPardonForm();
 
         void execute(const Bureaucrat &executor) const;
 };

@@ -6,7 +6,7 @@
 #    By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 15:57:28 by bat               #+#    #+#              #
-#    Updated: 2024/07/23 11:12:55 by bbessard         ###   ########.fr        #
+#    Updated: 2024/07/25 10:58:06 by bbessard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ INCLUDE_DIR = include
 BUILD_DIR = build
 
 # List of source files
-SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/Form.cpp $(SRC_DIR)/Bureaucrat.cpp 
+SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/AForm.cpp $(SRC_DIR)/Bureaucrat.cpp \
+$(SRC_DIR)/ShrubberyCreationForm.cpp $(SRC_DIR)/RobotomyRequestForm.cpp \
+$(SRC_DIR)/PresidentialPardonForm.cpp
 
 # Generate list of object files in build directory
 OBJ = $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRC))

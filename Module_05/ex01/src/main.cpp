@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:58:27 by bat               #+#    #+#             */
-/*   Updated: 2024/07/25 09:41:58 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/25 10:45:33 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 #include <iostream>
 #include <stdexcept>
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardoForm.hpp"
 
 int main() {
     std::cout << "----------EX01 TEST----------" << std::endl;

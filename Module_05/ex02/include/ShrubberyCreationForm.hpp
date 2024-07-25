@@ -6,16 +6,16 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 09:55:42 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/25 10:11:57 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/25 11:11:00 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHRUBBERY_CREATION_FORM_HPP
 #define SHRUBBERY_CREATION_FORM_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class ShrubberyCreationForm : public Form {
+class ShrubberyCreationForm : public AForm {
     
     private:
         std::string _target;

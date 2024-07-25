@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:59:12 by bat               #+#    #+#             */
-/*   Updated: 2024/07/25 09:50:32 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/25 10:55:20 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class Bureaucrat {
 				}
 		};
 		
-        Bureaucrat(void);
+        // Bureaucrat(void);
         Bureaucrat(const std::string name, int grade);
         Bureaucrat(const Bureaucrat &src);
         Bureaucrat& operator=(const Bureaucrat &src);
@@ -50,8 +50,9 @@ class Bureaucrat {
         int getGrade() const;
         void incrementGrade();
         void decrementGrade();
+		void signForm(AForm &aform) const;
         
-		void signForm(Form &form) const;
+        void executeForm(AForm const &aform) const;
 };
 
 std::ostream& operator<<(std::ostream &o, Bureaucrat const &other);
