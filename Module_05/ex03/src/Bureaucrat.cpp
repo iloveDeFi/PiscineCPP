@@ -6,15 +6,14 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:58:20 by bat               #+#    #+#             */
-/*   Updated: 2024/07/29 11:04:50 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/25 14:07:27 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 #include <stdexcept>
 
-
-// Parametric constructor
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade) {
 	if (grade < 1) {
 		throw GradeTooHighException();
@@ -22,15 +21,13 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(
 	else if (grade > 150) {
 		throw GradeTooLowException();
 	}
-	std::cout << "Construcor called properly with param." << std::endl;
+	std::cout << "Bureaucrat Param construcor called." << std::endl;
 }
 
-// Copy constructor
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name), _grade(other._grade) {
-	std::cout << "Copy constructor called." << std::endl;
+	std::cout << "Bureaucrat Copy constructor called." << std::endl;
 }
 
-// Copy assignement operator
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other) {
 	if (this != &other) {
 		this->_grade = other._grade;
@@ -39,7 +36,6 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other) {
 	return *this;
 }
 
-// Destructor
 Bureaucrat::~Bureaucrat() {
 	std::cout << "Bureaucrat destructor called." << std::endl;
 }
@@ -52,23 +48,37 @@ int Bureaucrat::getGrade() const {
 	return this->_grade;
 }
 
-// Méthode pour incrémenter le grade
 void Bureaucrat::incrementGrade() {
-    if (_grade <= 1) {
-        throw GradeTooHighException();
-    }
-    --_grade;
+	if (this->_grade++ > 150)
+		throw GradeTooHighException();
+	this->_grade++;
 }
 
-// Méthode pour décrémenter le grade
 void Bureaucrat::decrementGrade() {
-    if (_grade >= 150) {
-        throw GradeTooLowException();
-    }
-    ++_grade;
+	if (this->_grade-- < 1)
+		throw GradeTooLowException();
+	this->_grade--;
 }
 
-// Surcharge de l'opérateur << pour l'affichage
+void Bureaucrat::signForm(AForm &aform) const {
+    try {
+        aform.beSigned(*this);
+        std::cout << this->_name << " signed " << aform.getName() << std::endl;
+    } catch (const std::exception &e) {
+        std::cout << this->_name << " couldn't sign " << aform.getName() 
+                  << " because " << e.what() << std::endl;
+    }
+}
+
+void Bureaucrat::executeForm(AForm const &aform) const {
+	try {
+		aform.execute(*this);
+		std::cout << this->_name << " executed " << aform.getName() << std::endl;
+	} catch (std::exception &e) {
+		std::cerr << this->_name << " could not execute " << aform.getName() << " because " << e.what() << std::endl;
+	}
+}
+
 std::ostream& operator<<(std::ostream &o, Bureaucrat const &other) {
     o << other.getName() << ", bureaucrat grade " << other.getGrade();
     return o;
