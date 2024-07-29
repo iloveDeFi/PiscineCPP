@@ -6,11 +6,11 @@
 #    By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 15:57:28 by bat               #+#    #+#              #
-#    Updated: 2024/07/25 10:58:06 by bbessard         ###   ########.fr        #
+#    Updated: 2024/07/29 12:18:31 by bbessard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-TARGET = Maggots
+TARGET = Shrubbery
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRC_DIR = src
