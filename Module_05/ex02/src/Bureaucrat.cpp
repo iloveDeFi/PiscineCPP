@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:58:20 by bat               #+#    #+#             */
-/*   Updated: 2024/07/25 14:07:27 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/29 11:55:08 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,17 @@ int Bureaucrat::getGrade() const {
 }
 
 void Bureaucrat::incrementGrade() {
-	if (this->_grade++ > 150)
-		throw GradeTooHighException();
-	this->_grade++;
+    if (_grade <= 1) {
+        throw GradeTooHighException();
+    }
+    --_grade;
 }
 
 void Bureaucrat::decrementGrade() {
-	if (this->_grade-- < 1)
-		throw GradeTooLowException();
-	this->_grade--;
+    if (_grade >= 150) {
+        throw GradeTooLowException();
+    }
+    ++_grade;
 }
 
 void Bureaucrat::signForm(AForm &aform) const {
@@ -66,7 +68,7 @@ void Bureaucrat::signForm(AForm &aform) const {
         std::cout << this->_name << " signed " << aform.getName() << std::endl;
     } catch (const std::exception &e) {
         std::cout << this->_name << " couldn't sign " << aform.getName() 
-                  << " because " << e.what() << std::endl;
+			<< " because " << e.what() << std::endl;
     }
 }
 
@@ -75,7 +77,8 @@ void Bureaucrat::executeForm(AForm const &aform) const {
 		aform.execute(*this);
 		std::cout << this->_name << " executed " << aform.getName() << std::endl;
 	} catch (std::exception &e) {
-		std::cerr << this->_name << " could not execute " << aform.getName() << " because " << e.what() << std::endl;
+		std::cerr << this->_name << " could not execute " << aform.getName()
+			<< " because " << e.what() << std::endl;
 	}
 }
 

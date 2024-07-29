@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 14:53:55 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/25 08:49:40 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/29 11:45:05 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 #include <stdexcept>
 
 #include "Form.hpp"
-
-// Form::Form(void) : _name("Default"), _isSigned(false), _gradeToSign(1),
-// 	_gradeToExecute(1) {
-// 		std::cout << "Default constructor Form called" << std::endl;
-// }
 
 Form::Form(const std::string &name, int gradeToSign, int gradeToExecute) 
 	: _name(name), _isSigned(false), _gradeToSign(gradeToSign),
@@ -40,7 +35,6 @@ Form::Form(const Form &other)
 Form& Form::operator=(const Form &other) {
 	if (this != &other)
 	{
-		// Reminder no need to assign const varibales sheesh
 		_isSigned = other._isSigned;
 	}
 	std::cout << "Copy assignment operator Form called" << std::endl;
