@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:57:20 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/26 10:19:19 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/29 15:20:01 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,43 @@
 
 Intern::Intern() {}
 
-Intern::Intern(const Intern &intern) {}
+Intern::Intern(const Intern &intern) {
+    (void)intern;
+}
 
-Inter& Intern::operator=(const Intern &intern);
+Intern& Intern::operator=(const Intern &intern) {
+    (void)intern;
+    return *this;
+}
 
 Intern::~Intern() {}
 
-Form* makeForm(const std::string formName, std::string &target const) {
-    try {
-        if (formName != AForm.getName()) {
-            throw std::exception();
-        }
-        else {
-            std::cout << "Inter creates" << target.getName() << std::endl;
-        }
+AForm* Intern::makeSCF(std::string target) const {
+    return new ShrubberyCreationForm(target);
+}
 
-    } catch (std::exception &e) {
-        
-    }
+AForm* Intern::makeRRF(std::string target) const {
+    return new RobotomyRequestForm(target);
+}
+
+AForm* Intern::makePPF(std::string target) const {
+    return new PresidentialPardonForm(target);
 }
 
 
-try {
-        Bureaucrat john("John", 151); // Devrait lancer une exception
-    } catch (const Bureaucrat::GradeTooHighException& e) {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
-    } catch (const Bureaucrat::GradeTooLowException& e) {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
+AForm* Intern::makeForm(const std::string formName, const std::string &target) const {
+    try {
+        if (formName == "shrubbery creation") {
+            return makeSCF(target);
+        } else if (formName == "robotomy request") {
+            return makeRRF(target);
+        } else if (formName == "presidential pardon") {
+            return makePPF(target);
+        } else {
+            throw FormDoesntExist();
+        }
+    } catch (const FormDoesntExist &e) {
+        // std::cerr << "Exception caught: " << e.what() << std::endl;
+        throw;
     }
+}

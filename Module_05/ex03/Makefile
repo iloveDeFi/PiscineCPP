@@ -6,11 +6,11 @@
 #    By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 15:57:28 by bat               #+#    #+#              #
-#    Updated: 2024/07/25 14:57:05 by bbessard         ###   ########.fr        #
+#    Updated: 2024/07/29 15:07:58 by bbessard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-TARGET = Maggots
+TARGET = Intern
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRC_DIR = src
