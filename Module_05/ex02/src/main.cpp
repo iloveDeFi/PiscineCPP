@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:58:27 by bat               #+#    #+#             */
-/*   Updated: 2024/07/25 14:50:58 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/29 14:25:05 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int main() {
     Bureaucrat bureaucrat("Alex", 30);
 
     std::cout << "-----Test ShrubberyCreationFOrm-----" << std::endl;
+    std::cout << "-----Required grades: sign 145, exec 137-----" << std::endl;
     try {
         ShrubberyCreationForm shrubberyForm("(A)");
         bureaucrat.signForm(shrubberyForm);
@@ -34,6 +35,7 @@ int main() {
     }
 
     std::cout << "-----Test RobotomyRequestForm-----" << std::endl;
+    std::cout << "-----Required grades: sign 72, exec 45-----" << std::endl;
     try {
         RobotomyRequestForm robotomyForm("(B)");
         bureaucrat.signForm(robotomyForm);
@@ -43,6 +45,7 @@ int main() {
     }
 
     std::cout << "-----Test PresidentialPardonForm-----" << std::endl;
+    std::cout << "-----Required grades: sign 25, exec 5-----" << std::endl;
     try {
         PresidentialPardonForm pardonForm("(C)");
         bureaucrat.signForm(pardonForm);

@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 10:15:44 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/25 14:46:00 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/29 13:53:12 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 #include <ctime>
 #include <iostream>
 
+// Randomness generator
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
     : AForm("Robotomy Request", 72, 45), _target(target) {
-    std::srand(std::time(nullptr)); // Seed for randomness
+    std::srand(static_cast<unsigned int>(std::time(0)));
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src)

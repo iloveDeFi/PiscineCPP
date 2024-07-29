@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:58:20 by bat               #+#    #+#             */
-/*   Updated: 2024/07/29 11:55:08 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/29 14:19:35 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void Bureaucrat::signForm(AForm &aform) const {
 
 void Bureaucrat::executeForm(AForm const &aform) const {
 	try {
+		// here my this represente my Bureaucrat object
 		aform.execute(*this);
 		std::cout << this->_name << " executed " << aform.getName() << std::endl;
 	} catch (std::exception &e) {

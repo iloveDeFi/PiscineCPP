@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 10:16:12 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/25 14:45:29 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/07/29 13:47:03 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
         throw FormNotSignedException();
     if (executor.getGrade() > getGradeToExecute())
         throw GradeTooLowException();
-    std::ofstream ofs(_target + "_shrubbery");
+    std::ofstream ofs(this->_target + "_shrubbery");
     if (ofs) {
         ofs << "       _-_\n";
         ofs << "    /~~   ~~\\\n";
