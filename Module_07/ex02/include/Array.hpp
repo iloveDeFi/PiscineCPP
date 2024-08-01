@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 16:25:47 by bbessard          #+#    #+#             */
-/*   Updated: 2024/08/01 09:53:51 by bat              ###   ########.fr       */
+/*   Created: 2024/07/31 17:06:52 by bat               #+#    #+#             */
+/*   Updated: 2024/07/31 17:17:07 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Scalar.hpp"
+#ifndef ARRAY_HPP
+# define ARRAY_HPP
 
-int main(int argc, char* argv[]) {
-    if (argc != 2) {
-        std::cerr << "Need only one argument. Usage: " << argv[0] << " <literal>" << std::endl;
-        return 1;
-    }
+class Array {
+    private:
+    public:
+        Array();
+        Array(unsigned int n);
+        Array(const Array &src);
+        Array& operator=(const Array &src);
+        ~Array();
 
-    ScalarConverter::convert(argv[1]);
-    return 0;
-}
+        T arraySize() const;
+};
+
+#endif

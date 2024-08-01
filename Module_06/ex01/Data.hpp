@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 16:25:47 by bbessard          #+#    #+#             */
-/*   Updated: 2024/08/01 09:53:51 by bat              ###   ########.fr       */
+/*   Created: 2024/08/01 10:01:07 by bat               #+#    #+#             */
+/*   Updated: 2024/08/01 10:01:11 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Scalar.hpp"
+#ifndef DATA_HPP
+# define DATA_HPP
 
-int main(int argc, char* argv[]) {
-    if (argc != 2) {
-        std::cerr << "Need only one argument. Usage: " << argv[0] << " <literal>" << std::endl;
-        return 1;
-    }
+#include <iostream>
 
-    ScalarConverter::convert(argv[1]);
-    return 0;
-}
+struct Data
+{
+	std::string	race;
+	std::string	name;
+	int			age;
+};
+
+#endif

@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 16:25:47 by bbessard          #+#    #+#             */
-/*   Updated: 2024/08/01 09:53:51 by bat              ###   ########.fr       */
+/*   Created: 2024/01/24 09:25:36 by berard            #+#    #+#             */
+/*   Updated: 2024/08/01 09:59:55 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Scalar.hpp"
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
 
-int main(int argc, char* argv[]) {
-    if (argc != 2) {
-        std::cerr << "Need only one argument. Usage: " << argv[0] << " <literal>" << std::endl;
-        return 1;
-    }
+#include <iostream>
+#include <string>
+#include <cstdint>
+#include "Data.hpp"
 
-    ScalarConverter::convert(argv[1]);
-    return 0;
-}
+class Serializer
+{
+	public :
+		static uintptr_t	serialize(Data *ptr);
+		static Data			*deserialize(uintptr_t raw);
+	private :
+		Serializer(void);
+		Serializer(Serializer const &src);
+		~Serializer(void);
+
+		Serializer	&operator=(Serializer const & rhs);
+};
+
+#endif

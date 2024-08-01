@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bat <bat@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/07/30 17:52:52 by bbessard          #+#    #+#              #
-#    Updated: 2024/07/31 17:05:00 by bat              ###   ########.fr        #
+#    Created: 2024/07/31 17:05:04 by bat               #+#    #+#              #
+#    Updated: 2024/07/31 17:05:38 by bat              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-TARGET = Iter
+TARGET = Array
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRC_DIR = src
@@ -18,7 +18,7 @@ INCLUDE_DIR = include
 BUILD_DIR = build
 
 # List of source files
-SRC = $(SRC_DIR)/main.cpp 
+SRC = $(SRC_DIR)/main.cpp
 
 # Generate list of object files in build directory
 OBJ = $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRC))
