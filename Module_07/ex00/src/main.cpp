@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 11:31:12 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/30 17:51:10 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/08/07 14:53:15 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ int main() {
     
     Boom<std::string> stringBoom;
     stringBoom.test("chaine1", "chaine2");
+
+    std::cout << "------- MORE TESTS for my EQUALS ARGUMENTS ------" << std::endl;
+    int e = 5;
+    int f = 5;
+    int *p = &e;
+    int *pp = &f;
+    std::cout << "e value is : " << e << " and address is: " << &e << std::endl;
+    std::cout << "f value is : " << f << " and address is: " << &f << std::endl;
+    std::cout << "min(e, f) = " << ::min(p, pp) << std::endl;
+    std::cout << "max(e, f) = " << ::max(p, pp) << std::endl;
 
     return 0;
 }

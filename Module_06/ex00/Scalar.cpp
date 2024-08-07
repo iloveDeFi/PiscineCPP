@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scalar.cpp                                         :+:      :+:    :+:   */
+/*   Scalar.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 16:20:43 by bbessard          #+#    #+#             */
-/*   Updated: 2024/07/30 11:17:21 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/08/07 10:33:59 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void ScalarConverter::convert(const std::string& literal) {
         char c = literal[0];
         std::cout << "char: '" << c << "'" << std::endl;
         std::cout << "int: " << static_cast<int>(c) << std::endl;
-        std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
-        std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
+        std::cout << "float: " << static_cast<float>(c) << "f" << std::endl;
+        std::cout << "double: " << static_cast<double>(c) << std::endl;
         return;
     }
 
@@ -63,7 +63,7 @@ void ScalarConverter::convert(const std::string& literal) {
     }
 
     char* endPtr;
-    // Try converting to int
+
     long intVal = std::strtol(literal.c_str(), &endPtr, 10);
     if (*endPtr == '\0' && intVal >= std::numeric_limits<int>::min() && intVal <= std::numeric_limits<int>::max()) {
         std::cout << "char: ";
@@ -78,22 +78,25 @@ void ScalarConverter::convert(const std::string& literal) {
         return;
     }
 
-    // Try converting to float
     float floatVal = std::strtof(literal.c_str(), &endPtr);
     if (*endPtr == 'f' && *(endPtr + 1) == '\0') {
-        std::cout << "char: impossible" << std::endl;
+        std::cout << "char: ";
+        if (floatVal >= std::numeric_limits<char>::min() && floatVal <= std::numeric_limits<char>::max() && std::isprint(static_cast<char>(floatVal))) {
+            std::cout << "'" << static_cast<char>(floatVal) << "'" << std::endl;
+        } else {
+            std::cout << "impossible" << std::endl;
+        }
         std::cout << "int: ";
         if (floatVal >= std::numeric_limits<int>::min() && floatVal <= std::numeric_limits<int>::max()) {
             std::cout << static_cast<int>(floatVal) << std::endl;
         } else {
             std::cout << "impossible" << std::endl;
         }
-        std::cout << "float: " << floatVal << "f" << std::endl;
-        std::cout << "double: " << static_cast<double>(floatVal) << std::endl;
+        std::cout << "float: " << floatVal << ".0f" << std::endl;
+        std::cout << "double: " << static_cast<double>(floatVal) << ".0" << std::endl;
         return;
     }
 
-    // Try converting to double
     double doubleVal = std::strtod(literal.c_str(), &endPtr);
     if (*endPtr == '\0') {
         std::cout << "char: impossible" << std::endl;
@@ -113,7 +116,6 @@ void ScalarConverter::convert(const std::string& literal) {
         return;
     }
 
-    // If impossible to convert
     std::cout << "char: impossible" << std::endl;
     std::cout << "int: impossible" << std::endl;
     std::cout << "float: impossible" << std::endl;

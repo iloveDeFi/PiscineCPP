@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 09:59:16 by bat               #+#    #+#             */
-/*   Updated: 2024/08/01 09:59:19 by bat              ###   ########.fr       */
+/*   Updated: 2024/08/07 10:52:22 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ int	main(void)
 
 	initData(&animal);
 
-	std::cout << "~ Here are the original values ~" << std::endl;
+	std::cout << "Values before" << std::endl;
 	printData(&animal);
 	std::cout << std::endl;
 
-	std::cout << "~ Let's do some casting now ~" << std::endl;
+	std::cout << "Casting" << std::endl;
 	uintptr_t 	raw = Serializer::serialize(&animal);
 	Data		*new_animal = Serializer::deserialize(raw);
 	std::cout << std::endl;
 
-	std::cout << "~And now, Let's check that the values are always the same" << std::endl;
+	std::cout << "Values after (should be identical)" << std::endl;
 	printData(new_animal);
 	std::cout << std::endl;
 	return (0);
