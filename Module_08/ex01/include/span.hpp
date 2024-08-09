@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 11:09:56 by bbessard          #+#    #+#             */
-/*   Updated: 2024/08/09 12:56:28 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/08/09 14:13:58 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,18 @@
 #include <limits>
 
 class Span {
+
     private: 
         unsigned int _N;
         std::vector<unsigned int> _vec;
+        
     public:
         Span(unsigned int N);
         ~Span();
         Span(const Span & src);
         Span& operator=(const Span & src);
 
-        void addNumber(unsigned int);
+        void addNumber(unsigned int numberToAdd);
         unsigned int shortestSpan(void) const;
         unsigned int longestSpan(void) const;
 };

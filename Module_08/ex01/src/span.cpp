@@ -6,19 +6,18 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 11:12:09 by bbessard          #+#    #+#             */
-/*   Updated: 2024/08/09 13:17:47 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/08/09 14:26:13 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Span.hpp"
+#include "span.hpp"
 
 Span::Span(unsigned int N) : _N(N) {
-    this->_vec.reserve(unsigned int N);
+    this->_vec.reserve(N);
 }
 
-Span::Span(const Span& src) {
-    *this = src;
-}
+Span::Span(const Span& src) : _N(src._N), _vec(src._vec) {}
+
 
 Span& Span::operator=(const Span & src) {
     if (this != &src) { 
@@ -33,7 +32,7 @@ Span::~Span() {}
 void Span::addNumber(unsigned int numberToAdd) {
 
     if (_vec.size() >= _N)
-        throw ("Exeception catched: Sorry container is already full.");
+        throw std::runtime_error("Exeception catched: Sorry container is already full.");
     _vec.push_back(numberToAdd);
     
 }
@@ -65,10 +64,10 @@ unsigned int Span::shortestSpan(void) const {
 unsigned int Span::longestSpan(void) const {
     
     if (_vec.empty() || _vec.size() <= 1)
-        throw ("Chiquitos, no span in an empty object. U need at least two values.");
+        throw std::runtime_error("Chiquitos, no span in an empty object. U need at least two values.");
 
-    int maxElement = *std::max_element(_vec.begin(), _vec.end());
-    int minElement = *std::min_element(_vec.begin(), _vec.end());
+    unsigned int maxElement = *std::max_element(_vec.begin(), _vec.end());
+    unsigned int minElement = *std::min_element(_vec.begin(), _vec.end());
 
     return maxElement - minElement;
 }
