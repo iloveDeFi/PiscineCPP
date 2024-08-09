@@ -6,11 +6,11 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 11:12:09 by bbessard          #+#    #+#             */
-/*   Updated: 2024/08/09 14:26:13 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/08/09 15:14:15 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "span.hpp"
+#include "Span.hpp"
 
 Span::Span(unsigned int N) : _N(N) {
     this->_vec.reserve(N);
