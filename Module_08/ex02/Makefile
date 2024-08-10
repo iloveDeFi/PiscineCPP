@@ -6,12 +6,12 @@
 #    By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/09 15:41:27 by bbessard          #+#    #+#              #
-#    Updated: 2024/08/09 15:41:53 by bbessard         ###   ########.fr        #
+#    Updated: 2024/08/10 13:42:15 by bbessard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Nom de l'exécutable
-TARGET = MutantStack
+TARGET = Abomination
 
 # Compilateur C++
 CXX = g++

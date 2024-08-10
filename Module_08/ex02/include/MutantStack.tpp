@@ -6,78 +6,47 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 15:13:44 by bbessard          #+#    #+#             */
-/*   Updated: 2024/08/09 15:38:00 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/08/10 15:20:33 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MUTANTSTACK_TPP
-# define MUTANTSTACK_TPP
-
 #include "MutantStack.hpp"
 
+// Constructeurs
 template <typename T>
-MutantStack<T>::MutantStack(void) {}
+MutantStack<T>::MutantStack() : std::stack<T>() {}
 
 template <typename T>
-MutantStack<T>::MutantStack(T num) : _num(num) {}
+MutantStack<T>::MutantStack(const MutantStack& src) : std::stack<T>(src) {}
 
 template <typename T>
-MutantStack<T>::~MutantStack(void) {}
+MutantStack<T>::~MutantStack() {}
 
 template <typename T>
-MutantStack<T>::MutantStack(const MutantStack & src) : _num(src._num), _stackitos(src._stackitos) {}
-
-template <typename T>
-MutantStack<T>& MutantStack<T>::operator=(const MutantStack & src) {
+MutantStack<T>& MutantStack<T>::operator=(const MutantStack& src) {
     if (this != &src) {
-        _num = src._num;
-        _stackitos = src._stackitos;
+        std::stack<T>::operator=(src);
     }
     return *this;
 }
 
+// Méthodes d'itérateurs
 template <typename T>
-void MutantStack<T>::emplace(T value) {
-    _stackitos.push(value);
+typename MutantStack<T>::iterator MutantStack<T>::begin() {
+    return this->c.begin();
 }
 
 template <typename T>
-bool MutantStack<T>::empty(void) const {
-    return _stackitos.empty();
+typename MutantStack<T>::iterator MutantStack<T>::end() {
+    return this->c.end();
 }
 
 template <typename T>
-void MutantStack<T>::pop(void) {
-    if (!_stackitos.empty()) {
-        _stackitos.pop();
-    } else {
-        throw std::out_of_range("Stack is empty");
-    }
+typename MutantStack<T>::const_iterator MutantStack<T>::begin() const {
+    return this->c.begin();
 }
 
 template <typename T>
-void MutantStack<T>::push(T value) {
-    _stackitos.push(value);
+typename MutantStack<T>::const_iterator MutantStack<T>::end() const {
+    return this->c.end();
 }
-
-template <typename T>
-size_t MutantStack<T>::size(void) const {
-    return _stackitos.size();
-}
-
-template <typename T>
-void MutantStack<T>::swap(MutantStack & other) {
-    _stackitos.swap(other._stackitos);
-    std::swap(_num, other._num);
-}
-
-template <typename T>
-T MutantStack<T>::top(void) const {
-    if (!_stackitos.empty()) {
-        return _stackitos.top();
-    } else {
-        throw std::out_of_range("Stack is empty");
-    }
-}
-
-#endif

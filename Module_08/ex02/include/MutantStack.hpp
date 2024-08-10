@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mutantstack.hpp                                    :+:      :+:    :+:   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:38:58 by bbessard          #+#    #+#             */
-/*   Updated: 2024/08/09 15:42:59 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/08/10 15:20:45 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,23 @@
 #include <algorithm>
 
 template <typename T>
-class MutantStack {
-    private:
-        T _num;
-        std::stack<T> _stackitos;
-
+class MutantStack : public std::stack<T> {
+    // protected:
+    //     Container c; // to underlying container
     public:
-        std::stack<T>::iterator it;
-        std::stack<Tt>::iterator ite;
+        MutantStack();
+        MutantStack(const MutantStack& src);
+        virtual ~MutantStack();
+        MutantStack& operator=(const MutantStack& src);
 
-        MutantStack(void);
-        MutantStack(T num);
-        ~MutantStack(void);
-        MutantStack(const MutantStack & src);
-        MutantStack& operator=(const MutantStack & src);
+        // Check cplusplus.com if needed, stack depends from its underlying container deque
+        typedef typename std::stack<T>::container_type::iterator iterator;
+        typedef typename std::stack<T>::container_type::const_iterator const_iterator;
 
-        void emplace(T value);
-        bool empty(void) const;
-        void pop(void);
-        void push(T value);
-        size_t size(void) const;
-        void swap(MutantStack & other);
-        T top(void) const;
+        iterator begin();
+        iterator end();
+        const_iterator begin() const;
+        const_iterator end() const;
 };
 
 #include "MutantStack.tpp"
