@@ -5,26 +5,35 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <iostream>
+#include <cstring>
+
 
 int main(int ac, char **av) {
-
-     if (ac == 1) {
-        std::cout << "Error: could not open file" << std::endl;
-    } else if (ac > 2) {
-        std::cout << "Error: to many arguments. Should be 2" << std::endl;
+    if (ac != 3) {
+        if (ac < 3) {
+            std::cout << "Error: not enough arguments. Should be 3" << std::endl;
+        } else {
+            std::cout << "Error: too many arguments. Should be 3" << std::endl;
+        }
+        return 1; 
     }
 
-    // Ouvrir le fichier CSV
-    std::ifstream file("fichier.csv");
-    
-    // Vérifier si le fichier est bien ouvert
-    if (!file.is_open()) {
-        std::cerr << "Erreur lors de l'ouverture du fichier." << std::endl;
+    if (std::strcmp(av[1], "btc") != 0) {
+        std::cout << "Error: program name must be: btc" << std::endl;
         return 1;
     }
 
+    std::ifstream file(av[2]);
+    if (!file.is_open()) {
+        std::cout << "Error: argument 2 must be an openable file " << av[2] << std::endl;
+        return 1;
+    }
+
+    std::cout << "File " << av[2] << " opened successfully!" << std::endl;
+
+
     std::string line;
-    // Lire le fichier ligne par ligne
     while (std::getline(file, line)) {
         std::stringstream ss(line);
         std::string value;
@@ -42,7 +51,6 @@ int main(int ac, char **av) {
         std::cout << "---- Fin de la ligne ----" << std::endl;
     }
 
-    // Fermer le fichier
     file.close();
     return 0;
 }
