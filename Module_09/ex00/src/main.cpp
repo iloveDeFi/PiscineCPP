@@ -1,56 +1,60 @@
-#include "BitcoinExchange.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/14 17:54:20 by bbessard          #+#    #+#             */
+/*   Updated: 2024/08/14 18:03:35 by bbessard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "BitcoinExchange.hpp"
 #include <iostream>
-#include <fstream>
 #include <sstream>
 #include <string>
-#include <vector>
-#include <iostream>
-#include <cstring>
+#include <iomanip>
+#include <cstdlib>
 
-
-int main(int ac, char **av) {
-    if (ac != 3) {
-        if (ac < 3) {
-            std::cout << "Error: not enough arguments. Should be 3" << std::endl;
-        } else {
-            std::cout << "Error: too many arguments. Should be 3" << std::endl;
-        }
-        return 1; 
-    }
-
-    if (std::strcmp(av[1], "btc") != 0) {
-        std::cout << "Error: program name must be: btc" << std::endl;
+int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        std::cerr << "Usage: " << argv[0] << " <input file>" << std::endl;
         return 1;
     }
 
-    std::ifstream file(av[2]);
-    if (!file.is_open()) {
-        std::cout << "Error: argument 2 must be an openable file " << av[2] << std::endl;
-        return 1;
-    }
-
-    std::cout << "File " << av[2] << " opened successfully!" << std::endl;
-
+    btc exchange(argv[1]);
 
     std::string line;
-    while (std::getline(file, line)) {
+    while (std::getline(std::cin, line)) {
         std::stringstream ss(line);
-        std::string value;
-        std::vector<std::string> row;
+        std::string date;
+        std::string valueStr;
+        float value;
 
-        // Séparer les valeurs avec la virgule comme délimiteur
-        while (std::getline(ss, value, ',')) {
-            row.push_back(value);
-        }
+        if (std::getline(ss, date, '|') && std::getline(ss, valueStr)) {
+            date = btc::trim(date);
+            valueStr = btc::trim(valueStr);
 
-        // Traiter les valeurs de la ligne
-        for (size_t i = 0; i < row.size(); ++i) {
-            std::cout << "Colonne " << i + 1 << ": " << row[i] << std::endl;
+            try {
+                value = static_cast<float>(std::atof(valueStr.c_str()));
+                if (value < 0) {
+                    std::cerr << "Error: not a positive number." << std::endl;
+                    continue;
+                }
+            } catch (...) {
+                std::cerr << "Error: bad input => " << line << std::endl;
+                continue;
+            }
+
+            float rate = exchange.getValue(date);
+            if (rate == -1) {
+                std::cerr << "Error: date not found." << std::endl;
+            } else {
+                std::cout << date << " => " << value << " = " << std::fixed << std::setprecision(2) << value * rate << std::endl;
+            }
         }
-        std::cout << "---- Fin de la ligne ----" << std::endl;
     }
 
-    file.close();
     return 0;
 }
