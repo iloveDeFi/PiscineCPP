@@ -15,17 +15,20 @@
 
 #include <string>
 #include <cstring>
-#include <map>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <vector>
+#include <iomanip>
+#include <cstdlib>
+#include <map>
+
 
 class btc {
     private:
         std::string _filename;
         std::map<std::string, float> _exchangeRates;
+
         
 
     public:
@@ -37,8 +40,9 @@ class btc {
 
         void loadExchangeRates(const std::string& dataFile);
         float getExchangeRate(const std::string& date) const;
-        static bool isValidDate(const std::string& date);
+
         static std::string trim(const std::string& str);
+        static bool isValidDate(const std::string& date);
 };
 
 #endif

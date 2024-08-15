@@ -6,16 +6,11 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 17:54:20 by bbessard          #+#    #+#             */
-/*   Updated: 2024/08/15 09:31:01 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/08/15 10:56:44 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <iomanip>
-#include <cstdlib>
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -23,37 +18,37 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    btc exchange(argv[1]);
+    try {
+        btc exchange(argv[1]);
 
-    std::string line;
-    while (std::getline(std::cin, line)) {
-        std::stringstream ss(line);
-        std::string date;
-        std::string valueStr;
-        float value;
+        std::string line;
+        while (std::getline(std::cin, line)) {
+            std::stringstream ss(line);
+            std::string date;
+            float value;
 
-        if (std::getline(ss, date, '|') && std::getline(ss, valueStr)) {
-            date = btc::trim(date);
-            valueStr = btc::trim(valueStr);
+            if (std::getline(ss, date, '|') && ss >> value) {
+                date = btc::trim(date);
 
-            try {
-                value = static_cast<float>(std::atof(valueStr.c_str()));
-                if (value < 0) {
-                    std::cerr << "Error: not a positive number." << std::endl;
+                if (!btc::isValidDate(date)) {
+                    std::cerr << "Error: bad input => " << line << std::endl;
                     continue;
                 }
-            } catch (...) {
-                std::cerr << "Error: bad input => " << line << std::endl;
-                continue;
-            }
 
-            float rate = exchange.getValue(date);
-            if (rate == -1) {
-                std::cerr << "Error: date not found." << std::endl;
+                float rate = exchange.getExchangeRate(date);
+                if (rate == -1) {
+                    std::cerr << "Error: date not found => " << date << std::endl;
+                    continue;
+                }
+
+                std::cout << date << " => " << value << " = " << value * rate << std::endl;
             } else {
-                std::cout << date << " => " << value << " = " << std::fixed << std::setprecision(2) << value * rate << std::endl;
+                std::cerr << "Error: bad input => " << line << std::endl;
             }
         }
+    } catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+        return 1;
     }
 
     return 0;

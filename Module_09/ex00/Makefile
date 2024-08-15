@@ -6,7 +6,8 @@ INCLUDE_DIR = include
 BUILD_DIR = build
 
 # List of source files
-SRC = $(SRC_DIR)/main.cpp
+SRC = 	$(SRC_DIR)/main.cpp \
+		$(SRC_DIR)/BitcoinExchange.cpp
 
 # Generate list of object files in build directory
 OBJ = $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRC))
