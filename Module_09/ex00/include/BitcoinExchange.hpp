@@ -21,18 +21,15 @@
 #include <string>
 #include <iomanip>
 #include <cstdlib>
+#include <stdexcept>
 #include <map>
-
 
 class btc {
     private:
         std::string _filename;
         std::map<std::string, float> _exchangeRates;
 
-        
-
     public:
-        // load data from my csv
         btc(const std::string& filename);
         ~btc();
         btc(const btc & src);
@@ -40,6 +37,7 @@ class btc {
 
         void loadExchangeRates(const std::string& dataFile);
         float getExchangeRate(const std::string& date) const;
+        void printData() const;
 
         static std::string trim(const std::string& str);
         static bool isValidDate(const std::string& date);

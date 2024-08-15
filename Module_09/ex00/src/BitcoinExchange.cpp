@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 17:42:00 by bbessard          #+#    #+#             */
-/*   Updated: 2024/08/15 11:03:14 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/08/15 14:17:02 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,33 @@ btc::btc(const btc & src) : _filename(src._filename), _exchangeRates(src._exchan
 
 btc& btc::operator=(const btc & src) {
     if (this != &src) {
-        this->_filename = src._filename;
+        this->_filename = src._filename; 
         this->_exchangeRates = src._exchangeRates;
     }
     return (*this);
 }
 
 void btc::loadExchangeRates(const std::string& dataFile) {
+    
     std::ifstream file(dataFile.c_str());
     if (!file.is_open()) {
-        std::cerr << "Error: could not open file." << std::endl;
-        throw std::runtime_error("File cannot be opened.");
+        std::cerr << "Error: could not open file " << _filename << std::endl;
+        throw std::runtime_error("File cannot be opened: " + _filename);
     }
 
+    
     std::string line;
     std::getline(file, line);
 
     while (std::getline(file, line)) {
         std::stringstream ss(line);
         std::string date;
-        std::string valueStr;
-        float value;
+        std::string rateStr;
+        float rate;
 
-        if (std::getline(ss, date, '|') && std::getline(ss, valueStr)) {
+        if (std::getline(ss, date, ',') && std::getline(ss, rateStr)) {
             date = trim(date);
-            valueStr = trim(valueStr);
+            rateStr = trim(rateStr);
 
             if (!isValidDate(date)) {
                 std::cerr << "Error: bad input => " << line << std::endl;
@@ -58,17 +60,15 @@ void btc::loadExchangeRates(const std::string& dataFile) {
             }
 
             try {
-                value = static_cast<float>(std::atof(valueStr.c_str()));
-                if (value < 0 || value > 1000) {
-                    std::cerr << "Error: " << (value < 0 ? "not a positive number." : "too large a number.") << std::endl;
+                rate = std::stof(rateStr);
+                if (rate < 0) {
+                    std::cerr << "Error: invalid rate => " << line << std::endl;
                     continue;
                 }
+                _exchangeRates[date] = rate;
             } catch (...) {
                 std::cerr << "Error: bad input => " << line << std::endl;
-                continue;
             }
-
-            _exchangeRates[date] = value;
         }
     }
     file.close();
@@ -96,4 +96,57 @@ bool btc::isValidDate(const std::string& date) {
         return false;
     }
     return true;
+}
+
+void btc::printData() const {
+    std::ifstream file(_filename.c_str());
+    if (!file.is_open()) {
+        std::cerr << "Error: could not open file." << std::endl;
+        return;
+    }
+
+    std::string line;
+    std::getline(file, line);
+
+    while (std::getline(file, line)) {
+        std::stringstream ss(line);
+        std::string date;
+        std::string quantityStr;
+        float quantity;
+
+        if (std::getline(ss, date, '|') && std::getline(ss, quantityStr)) {
+            date = trim(date);
+            quantityStr = trim(quantityStr);
+
+            if (!isValidDate(date)) {
+                std::cerr << "Error: bad input => " << date << std::endl;
+                continue;
+            }
+
+            try {
+                quantity = std::stof(quantityStr);
+                if (quantity < 0) {
+                    std::cerr << "Error: not a positive number." << std::endl;
+                    continue;
+                }
+                else if (quantity > 1000) {
+                    std::cerr << "Error: too large a number." << std::endl;
+                    continue;
+                }
+            } catch (...) {
+                std::cerr << "Error: bad input => " << date << std::endl;
+                continue;
+            }
+
+            float rate = getExchangeRate(date);
+            if (rate == -1) {
+                std::cerr << "Error: rate not found for date " << date << std::endl;
+                continue;
+            }
+
+            std::cout << date << " => " << quantity << " = " << quantity * rate << std::endl;
+        } else {
+            std::cerr << "Error: bad input => " << date << std::endl;
+        }
+    }
 }
