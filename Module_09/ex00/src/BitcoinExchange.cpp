@@ -6,37 +6,63 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 17:42:00 by bbessard          #+#    #+#             */
-/*   Updated: 2024/08/14 18:03:17 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/08/15 09:38:56 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-btc::btc(const std::string& filename) {
-    csvLoadData();
+btc::btc(const std::string& filename) : _filename(filename) {
+    loadExchangeRates(filename);
 }
 
 btc::~btc() {
 
 }
 
-btc::btc(const btc & src) : _btcData(src._btcData) {
+btc::btc(const btc & src) : _exchangeRates(src._exchangeRates) {
 
 }
 
 btc& btc::operator=(const btc & src) {
     if (this != &src) {
-        this->_btcData = src._btcData;
+        this->_exchangeRates = src._exchangeRates;
     }
     return (*this);
 }
 
-float btc::getValue(const std::string& date) const {
-    std::map<std::string, float>::const_iterator it = _btcData.lower_bound(date);
-    if (it == _btcData.end() || (it->first != date && it == _btcData.begin())) {
-        return -1; // Date non trouvée
+void btc::loadExchangeRates(const std::string& dataFile) {
+    std::ifstream file(dataFile);
+    if (!file.is_open()) {
+        throw std::runtime_error("Could not open file");
     }
-    if (it->first != date && it != _btcData.begin()) {
+
+    std::string line;
+    while (std::getline(file, line)) {
+        std::istringstream iss(line);
+        std::string date;
+        float rate;
+        if (std::getline(iss, date, ',') && iss >> rate) {
+            _exchangeRates[date] = rate;
+        }
+    }
+}
+
+float BitcoinExchange::getExchangeRate(const std::string& date) const {
+    std::map<std::string, float>::const_iterator it = _exchangeRates.find(date);
+    if (it != _exchangeRates.end()) {
+        return it->second;
+    } else {
+        throw std::runtime_error("Date not found");
+    }
+}
+
+float btc::getValue(const std::string& date) const {
+    std::map<std::string, float>::const_iterator it = _exchangeRates.lower_bound(date);
+    if (it == _exchangeRates.end() || (it->first != date && it == _exchangeRates.begin())) {
+        return -1;
+    }
+    if (it->first != date && it != _exchangeRates.begin()) {
         --it;
     }
     return it->second;
@@ -99,7 +125,7 @@ void btc::csvLoadData() {
             }
 
             // Ajouter à la map
-            _btcData[date] = value;
+            _exchangeRates[date] = value;
         }
     }
     file.close();

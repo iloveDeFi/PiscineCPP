@@ -24,8 +24,9 @@
 
 class btc {
     private:
-        std::map<std::string, float> _btcData;
-        static bool isValidDate(const std::string& date);
+        std::string _filename;
+        std::map<std::string, float> _exchangeRates;
+        
 
     public:
         // load data from my csv
@@ -34,8 +35,9 @@ class btc {
         btc(const btc & src);
         btc& operator=(const btc & src);
 
-        float getValue(const std::string& date) const;
-        void csvLoadData();
+        void loadExchangeRates(const std::string& dataFile);
+        float getExchangeRate(const std::string& date) const;
+        static bool isValidDate(const std::string& date);
         static std::string trim(const std::string& str);
 };
 
