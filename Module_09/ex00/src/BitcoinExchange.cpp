@@ -6,14 +6,14 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 17:42:00 by bbessard          #+#    #+#             */
-/*   Updated: 2024/08/15 14:17:02 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/08/16 18:57:08 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 btc::btc(const std::string& filename) : _filename(filename) {
-    loadExchangeRates(filename);
+    loadExchangeRates();
 }
 
 btc::~btc() {
@@ -32,15 +32,27 @@ btc& btc::operator=(const btc & src) {
     return (*this);
 }
 
-void btc::loadExchangeRates(const std::string& dataFile) {
+std::string btc::trim(const std::string& str) {
+    size_t start = str.find_first_not_of(" \t");
+    size_t end = str.find_last_not_of(" \t");
+    return (start == std::string::npos || end == std::string::npos) ? "" : str.substr(start, end - start + 1);
+}
+
+bool btc::isValidDate(const std::string& date) {
+    if (date.size() != 10 || date[4] != '-' || date[7] != '-') {
+        return false;
+    }
+    return true;
+}
+
+void btc::loadExchangeRates() {
     
-    std::ifstream file(dataFile.c_str());
+    std::ifstream file("data.csv");
     if (!file.is_open()) {
         std::cerr << "Error: could not open file " << _filename << std::endl;
         throw std::runtime_error("File cannot be opened: " + _filename);
     }
 
-    
     std::string line;
     std::getline(file, line);
 
@@ -55,7 +67,7 @@ void btc::loadExchangeRates(const std::string& dataFile) {
             rateStr = trim(rateStr);
 
             if (!isValidDate(date)) {
-                std::cerr << "Error: bad input => " << line << std::endl;
+                std::cerr << "Error: bad input => " << date << std::endl;
                 continue;
             }
 
@@ -67,7 +79,7 @@ void btc::loadExchangeRates(const std::string& dataFile) {
                 }
                 _exchangeRates[date] = rate;
             } catch (...) {
-                std::cerr << "Error: bad input => " << line << std::endl;
+                std::cerr << "Error: bad input => " << date << std::endl;
             }
         }
     }
@@ -83,19 +95,6 @@ float btc::getExchangeRate(const std::string& date) const {
         --it;
     }
     return it->second;
-}
-
-std::string btc::trim(const std::string& str) {
-    size_t start = str.find_first_not_of(" \t");
-    size_t end = str.find_last_not_of(" \t");
-    return (start == std::string::npos || end == std::string::npos) ? "" : str.substr(start, end - start + 1);
-}
-
-bool btc::isValidDate(const std::string& date) {
-    if (date.size() != 10 || date[4] != '-' || date[7] != '-') {
-        return false;
-    }
-    return true;
 }
 
 void btc::printData() const {
@@ -120,6 +119,11 @@ void btc::printData() const {
 
             if (!isValidDate(date)) {
                 std::cerr << "Error: bad input => " << date << std::endl;
+                continue;
+            }
+
+             if (dateChecker(date) == -1) {
+                std::cerr << "Error: date not found in database => " << date << std::endl;
                 continue;
             }
 
@@ -150,3 +154,22 @@ void btc::printData() const {
         }
     }
 }
+
+int btc::dateChecker(const std::string& date) const {
+    if (_exchangeRates.find(date) != _exchangeRates.end()) {
+        return 0;
+    } else {
+        return -1;
+    }
+}
+
+
+// Functionitos to test my mapitos
+// void btc::printMap(const std::map<std::string, float>& _exchangeRates) const {
+//     std::map<std::string, float>::const_iterator it;
+//     int x = 0;
+
+//     for (it = _exchangeRates.begin(); it != _exchangeRates.end(); ++it) {
+//         std::cout << "Date: " << it->first << " - Exchange Rate: " << it->second << std::endl;        
+//     }
+// }

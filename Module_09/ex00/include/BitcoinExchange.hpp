@@ -35,12 +35,19 @@ class btc {
         btc(const btc & src);
         btc& operator=(const btc & src);
 
-        void loadExchangeRates(const std::string& dataFile);
+        void loadExchangeRates();
         float getExchangeRate(const std::string& date) const;
         void printData() const;
+         int dateChecker(const std::string& date) const;
+        // void printMap(const std::map<std::string, float>& _exchangeRates) const;
+
+        const std::map<std::string, float>& getExchangeRates() const {
+        return _exchangeRates;
+    }
 
         static std::string trim(const std::string& str);
         static bool isValidDate(const std::string& date);
+        
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 17:54:20 by bbessard          #+#    #+#             */
-/*   Updated: 2024/08/15 14:07:14 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/08/16 18:11:54 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int main(int argc, char* argv[]) {
 
     try {
         btc exchange(argv[1]);
-        exchange.loadExchangeRates(argv[1]);
+        exchange.loadExchangeRates();
+        // Map fulled properly noice
+        // exchange.printMap(exchange.getExchangeRates());
         exchange.printData();
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
