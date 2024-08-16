@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 17:42:00 by bbessard          #+#    #+#             */
-/*   Updated: 2024/08/16 18:57:08 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/08/16 19:00:33 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,9 @@ int btc::dateChecker(const std::string& date) const {
     }
 }
 
+ const std::map<std::string, float>& btc::getExchangeRates() const {
+        return _exchangeRates;
+}
 
 // Functionitos to test my mapitos
 // void btc::printMap(const std::map<std::string, float>& _exchangeRates) const {

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btc.hpp                                :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/14 10:40:37 by bbessard          #+#    #+#             */
-/*   Updated: 2024/08/14 17:20:56 by bbessard         ###   ########.fr       */
+/*   Created: 2024/08/16 18:58:52 by bbessard          #+#    #+#             */
+/*   Updated: 2024/08/16 19:00:03 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BTC_HPP
-# define BTC_HPP
+#ifndef RPN_HPP
+# define RPN_HPP
 
 #include <string>
 #include <cstring>
@@ -22,29 +22,28 @@
 #include <iomanip>
 #include <cstdlib>
 #include <stdexcept>
-#include <map>
+#include <deque>
 
-class btc {
+class RPN {
     private:
         std::string _filename;
         std::map<std::string, float> _exchangeRates;
 
     public:
-        btc(const std::string& filename);
-        ~btc();
-        btc(const btc & src);
-        btc& operator=(const btc & src);
+        RPN(const std::string& filename);
+        ~RPN();
+        RPN(const RPN & src);
+        RPN& operator=(const RPN & src);
 
         void loadExchangeRates();
         float getExchangeRate(const std::string& date) const;
         void printData() const;
          int dateChecker(const std::string& date) const;
         // void printMap(const std::map<std::string, float>& _exchangeRates) const;
-        const std::map<std::string, float>& getExchangeRates() const;
+
         static std::string trim(const std::string& str);
         static bool isValidDate(const std::string& date);
         
 };
 
 #endif
-
