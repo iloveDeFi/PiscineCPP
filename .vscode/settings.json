@@ -79,5 +79,6 @@
         "list": "cpp",
         "map": "cpp",
         "span": "cpp"
-    }
+    },
+    "files.autoSave": "onFocusChange"
 }
