@@ -6,12 +6,12 @@
 #    By: bat <bat@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/17 11:23:46 by bat               #+#    #+#              #
-#    Updated: 2024/08/17 11:23:47 by bat              ###   ########.fr        #
+#    Updated: 2024/08/17 13:55:23 by bat              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Nom de l'exécutable
-EXEC = RPN
+EXEC = PmergeMe
 
 # Compilateur
 CC = g++
@@ -20,7 +20,7 @@ CC = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Fichiers sources
-SRCS = main.cpp RPN.cpp
+SRCS = main.cpp PmergeMe.cpp
 
 # Fichiers objets (générés automatiquement à partir des sources)
 OBJS = $(SRCS:.cpp=.o)

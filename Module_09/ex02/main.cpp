@@ -6,7 +6,7 @@
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 11:25:38 by bat               #+#    #+#             */
-/*   Updated: 2024/08/17 11:52:09 by bat              ###   ########.fr       */
+/*   Updated: 2024/08/17 13:53:13 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,11 @@ int main(int ac, char **av) {
         int num = std::atoi(av[i]);
         numbers.push_back(num);
     }
+
+    std::cout << "Numbers from argv are: ";
+    for(std::size_t i = 0; i < numbers.size(); ++i) {
+        std::cout << numbers[i] << " ";
+    }
+    std::cout << std::endl;
+    return (0);
 }

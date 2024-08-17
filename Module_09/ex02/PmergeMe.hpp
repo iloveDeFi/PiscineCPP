@@ -6,12 +6,12 @@
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 11:40:10 by bat               #+#    #+#             */
-/*   Updated: 2024/08/17 11:50:00 by bat              ###   ########.fr       */
+/*   Updated: 2024/08/17 13:53:51 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PMERGEME_HPP
-# define PMERGME_HPP
+# define PMERGEME_HPP
 
 #include <iostream>
 #include <string>
