@@ -6,29 +6,33 @@
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 11:40:10 by bat               #+#    #+#             */
-/*   Updated: 2024/08/17 13:53:51 by bat              ###   ########.fr       */
+/*   Updated: 2024/08/21 14:40:34 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PMERGEME_HPP
-# define PMERGEME_HPP
+#define PMERGEME_HPP
 
-#include <iostream>
-#include <string>
-#include <algorithm>
 #include <deque>
+#include <list>
 #include <vector>
-#include <ctime>
+#include <iostream>
 
 class PmergeMe {
-    private:
-        std::vector<unsigned int> _vec;
-        std::deque<unsigned int> _deq;
-    public:
-        PmergeMe();
-        ~PmergeMe();
-        PmergeMe(const PmergeMe & src);
-        PmergeMe& operator=(const PmergeMe & src);
+public:
+    PmergeMe(int ac, char **av);
+    
+private:
+    std::deque<int> inputDeque;
+    std::list<int> inputList;
+    std::vector<int> inputVector;
+
+    template <typename T>
+    void display(const T& container);
+    
+    void mergeInsertSortDeque(std::deque<int>& arr);
+    void mergeInsertSortList(std::list<int>& arr);
+    void mergeInsertSortVector(std::vector<int>& arr);
 };
 
 #endif

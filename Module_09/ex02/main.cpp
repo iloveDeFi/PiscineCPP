@@ -6,28 +6,20 @@
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 11:25:38 by bat               #+#    #+#             */
-/*   Updated: 2024/08/17 13:53:13 by bat              ###   ########.fr       */
+/*   Updated: 2024/08/21 14:13:23 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-int main(int ac, char **av) {
-    if(ac < 2) {
-        std::cerr << "Usage: " << av[0] << " [list of integers]" << std::endl;
+int main(int ac, char* av[])
+{
+	if (ac <= 1)
+    {
+        std::cerr << "Error: No input sequence provided." << std::endl;
         return 1;
     }
-
-    std::vector<int> numbers;
-    for (int i = 1; i < ac; ++i) {
-        int num = std::atoi(av[i]);
-        numbers.push_back(num);
-    }
-
-    std::cout << "Numbers from argv are: ";
-    for(std::size_t i = 0; i < numbers.size(); ++i) {
-        std::cout << numbers[i] << " ";
-    }
-    std::cout << std::endl;
-    return (0);
+	PmergeMe pmergeMe(ac, av);
+	(void)pmergeMe;
+    return 0;
 }
