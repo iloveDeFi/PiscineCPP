@@ -6,7 +6,7 @@
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 09:55:24 by bat               #+#    #+#             */
-/*   Updated: 2024/08/21 14:46:03 by bat              ###   ########.fr       */
+/*   Updated: 2024/08/21 15:06:19 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 #include <ctime>
 
 PmergeMe::PmergeMe(int ac, char **av) {
+
     srand(static_cast<unsigned int>(time(NULL)));
+    
     for (int i = 1; i < ac; ++i) {
         int value = std::atoi(av[i]);
         if (value <= 0) {
@@ -47,13 +49,25 @@ PmergeMe::PmergeMe(int ac, char **av) {
 
     std::cout << "After: ";
     display(inputDeque);
-    std::cout << "Time to process a range of " << inputDeque.size() << " elements with std::deque container: " << time1 << " µs (microsecondes)" << std::endl;
-    std::cout << "Time to process a range of " << inputList.size() << " elements with std::list container: " << time2 << " µs (microsecondes)" << std::endl;
-    std::cout << "Time to process a range of " << inputVector.size() << " elements with std::vector container: " << time3 << " µs (microsecondes)" << std::endl;
 
-    // Verify if the sorted sequences are equal
-    bool equal = (inputDeque.size() == inputVector.size());
-    if (equal) {
+    std::cout << "Time to process a range of " << inputDeque.size() << " elements with std::deque container: " 
+              << time1 << " µs (microsecondes)" << std::endl;
+    std::cout << "Time to process a range of " << inputList.size() << " elements with std::list container: " 
+              << time2 << " µs (microsecondes)" << std::endl;
+    std::cout << "Time to process a range of " << inputVector.size() << " elements with std::vector container: " 
+              << time3 << " µs (microsecondes)" << std::endl;
+
+    bool areSizesEqual = (inputDeque.size() == inputVector.size()) &&
+                         (inputVector.size() == inputList.size());
+    if (areSizesEqual) {
+        std::cout << "Nice, the sorted sequences have an equal size Notorious." << std::endl;
+    } else {
+        std::cout << "Oopsi Jack, the sorted sequences are not equal." << std::endl;
+    }
+
+    if (areSizesEqual) {
+        bool equal = true;
+
         std::vector<int>::iterator vecIt = inputVector.begin();
         for (std::deque<int>::iterator deqIt = inputDeque.begin(); deqIt != inputDeque.end(); ++deqIt, ++vecIt) {
             if (*deqIt != *vecIt) {
@@ -61,26 +75,35 @@ PmergeMe::PmergeMe(int ac, char **av) {
                 break;
             }
         }
-    }
 
-    if (equal) {
-        std::cout << "The sorted sequences are equal." << std::endl;
+        if (equal) {
+            std::list<int>::iterator listIt = inputList.begin();
+            vecIt = inputVector.begin();
+            for (; listIt != inputList.end(); ++listIt, ++vecIt) {
+                if (*listIt != *vecIt) {
+                    equal = false;
+                    break;
+                }
+            }
+        }
+
+        if (equal) {
+            std::cout << "Sheesh, the sorted sequences are properly equal Big." << std::endl;
+        } else {
+            std::cout << "Oopsi Jack, the sorted sequences are not equal." << std::endl;
+        }
     } else {
-        std::cout << "The sorted sequences are not equal." << std::endl;
+        std::cout << "Mmmm nope, container sizes are not equal Averell." << std::endl;
     }
 }
 
-PmergeMe::~PmergeMe() {
-    // Destructor: Nothing special to do, as STL containers handle their own memory.
-}
 
-PmergeMe::PmergeMe(const PmergeMe &src) : inputDeque(src.inputDeque), inputList(src.inputList), inputVector(src.inputVector) {
-    // Copy constructor: Initialize from another PmergeMe object
-}
+PmergeMe::~PmergeMe() {}
+
+PmergeMe::PmergeMe(const PmergeMe &src) : inputDeque(src.inputDeque), inputList(src.inputList), inputVector(src.inputVector) {}
 
 PmergeMe& PmergeMe::operator=(const PmergeMe &src) {
     if (this != &src) {
-        // Assignment operator: Protect against self-assignment
         inputDeque = src.inputDeque;
         inputList = src.inputList;
         inputVector = src.inputVector;
