@@ -6,7 +6,7 @@
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 09:55:24 by bat               #+#    #+#             */
-/*   Updated: 2024/08/21 15:06:19 by bat              ###   ########.fr       */
+/*   Updated: 2024/08/21 15:21:10 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,18 @@ PmergeMe::PmergeMe(int ac, char **av) {
 
     std::cout << "After: ";
     display(inputDeque);
-
+    std::cout << std::endl;
+    std::cout << "First using the simple version of MergeInsort" << std::endl;
     std::cout << "Time to process a range of " << inputDeque.size() << " elements with std::deque container: " 
               << time1 << " µs (microsecondes)" << std::endl;
     std::cout << "Time to process a range of " << inputList.size() << " elements with std::list container: " 
               << time2 << " µs (microsecondes)" << std::endl;
     std::cout << "Time to process a range of " << inputVector.size() << " elements with std::vector container: " 
               << time3 << " µs (microsecondes)" << std::endl;
+              
+    std::cout << std::endl;
+    std::cout << "Then trying to properly rerpresent the Ford Johnson algorithm." << std::endl;
+    std::cout << std::endl;
 
     bool areSizesEqual = (inputDeque.size() == inputVector.size()) &&
                          (inputVector.size() == inputList.size());
