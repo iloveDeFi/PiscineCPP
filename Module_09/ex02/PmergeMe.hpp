@@ -6,7 +6,7 @@
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 11:40:10 by bat               #+#    #+#             */
-/*   Updated: 2024/08/21 14:40:34 by bat              ###   ########.fr       */
+/*   Updated: 2024/08/21 14:44:08 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 class PmergeMe {
 public:
     PmergeMe(int ac, char **av);
+	~PmergeMe();
+	PmergeMe(const PmergeMe &src);
+	PmergeMe& operator=(const PmergeMe & src);
     
 private:
     std::deque<int> inputDeque;
