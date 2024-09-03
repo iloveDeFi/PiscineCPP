@@ -6,7 +6,7 @@
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 09:55:24 by bat               #+#    #+#             */
-/*   Updated: 2024/08/21 23:40:03 by bat              ###   ########.fr       */
+/*   Updated: 2024/09/01 12:46:52 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ PmergeMe::PmergeMe(int ac, char **av) {
     for (int i = 1; i < ac; ++i) {
         int value = std::atoi(av[i]);
         if (value <= 0) {
-            std::cerr << "Error: Invalid input value \"" << av[i] << "\". Only positive integers are allowed." << std::endl;
+            std::cerr << "Error: Invalid input value \"" << av[i]
+                << "\". Only positive integers are allowed." << std::endl;
             exit(1);
         }
         inputDeque.push_back(value);
@@ -168,8 +169,6 @@ void PmergeMe::mergeInsertSortVector(std::vector<int>& arr) {
         arr[j] = temp;
     }
 }
-
-// Better version
 
 // Fonction de pairage (Pairing)
 void PmergeMe::pairing(std::list<int>& inputList, std::list<int>& sortedSubList, std::list<int>& unsortedSubList) {
