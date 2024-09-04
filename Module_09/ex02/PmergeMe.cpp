@@ -6,7 +6,7 @@
 /*   By: bat <bat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 09:55:24 by bat               #+#    #+#             */
-/*   Updated: 2024/09/01 12:46:52 by bat              ###   ########.fr       */
+/*   Updated: 2024/09/04 14:25:39 by bat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ PmergeMe::PmergeMe(int ac, char **av) {
         inputList.push_back(value);
         inputVector.push_back(value);
         inputVectorFJ.push_back(value);
+        inputDequeFJ.push_back(value);
+        inputListFJ.push_back(value);
     }
     
     std::cout << "Before: ";
@@ -52,6 +54,16 @@ PmergeMe::PmergeMe(int ac, char **av) {
     clock_t end4 = clock();
     double time4 = static_cast<double>(end4 - start4) / CLOCKS_PER_SEC * 1000000;
 
+    clock_t start5 = clock();
+    fordJohnsonSort(inputDequeFJ);
+    clock_t end5 = clock();
+    double time5 = static_cast<double>(end5 - start5) / CLOCKS_PER_SEC * 1000000;
+
+     clock_t start6 = clock();
+    fordJohnsonSort(inputListFJ);
+    clock_t end6 = clock();
+    double time6 = static_cast<double>(end6 - start6) / CLOCKS_PER_SEC * 1000000;
+
     std::cout << "After: ";
     display(inputDeque);
     std::cout << std::endl;
@@ -67,12 +79,16 @@ PmergeMe::PmergeMe(int ac, char **av) {
     std::cout << "Then trying to properly rerpresent the Ford Johnson algorithm." << std::endl;
     std::cout << "Time to process a range of " << inputVectorFJ.size() << " elements with std::vector container: "
         << time4 << " µs (microsecondes)" << std::endl;
+    std::cout << "Time to process a range of " << inputDequeFJ.size() << " elements with std::deque container: "
+        << time5 << " µs (microsecondes)" << std::endl;
+    std::cout << "Time to process a range of " << inputListFJ.size() << " elements with std::list container: "
+        << time6 << " µs (microsecondes)" << std::endl;
     std::cout << std::endl;
 
     bool areSizesEqual = (inputDeque.size() == inputVector.size()) &&
                          (inputVector.size() == inputList.size());
     if (areSizesEqual) {
-        std::cout << "Nice, the sorted sequences have an equal size Notorious." << std::endl;
+        std::cout << "Nice Sparrow, the sorted sequences have an equal size." << std::endl;
     } else {
         std::cout << "Oopsi Jack, the sorted sequences are not equal." << std::endl;
     }
@@ -100,7 +116,7 @@ PmergeMe::PmergeMe(int ac, char **av) {
         }
 
         if (equal) {
-            std::cout << "Sheesh, the sorted sequences are properly equal Big." << std::endl;
+            std::cout << "Good job Pedrolito, the sorted sequences are properly equal." << std::endl;
         } else {
             std::cout << "Oopsi Jack, the sorted sequences are not equal." << std::endl;
         }
@@ -133,23 +149,51 @@ void PmergeMe::display(const T& container) {
 }
 
 void PmergeMe::mergeInsertSortDeque(std::deque<int>& arr) {
-    std::deque<int>::iterator it1, it2;
-    for (it1 = arr.begin() + 1; it1 != arr.end(); ++it1) {
-        int temp = *it1;
-        it2 = it1;
-        while (it2 != arr.begin() && *(std::prev(it2)) > temp) {
-            *it2 = *(std::prev(it2));
-            --it2;
-        }
-        *it2 = temp;
-    }
+    mergeInsertSort(arr);
+    // std::deque<int>::iterator it1, it2;
+    // for (it1 = arr.begin() + 1; it1 != arr.end(); ++it1) {
+    //     int temp = *it1;
+    //     it2 = it1;
+    //     while (it2 != arr.begin() && *(std::prev(it2)) > temp) {
+    //         *it2 = *(std::prev(it2));
+    //         --it2;
+    //     }
+    //     *it2 = temp;
+    // }
 }
 
 void PmergeMe::mergeInsertSortList(std::list<int>& arr) {
-    std::list<int>::iterator it1, it2;
-    for (it1 = ++arr.begin(); it1 != arr.end(); ++it1) {
+    mergeInsertSort(arr);
+    // std::list<int>::iterator it1, it2;
+    // for (it1 = ++arr.begin(); it1 != arr.end(); ++it1) {
+    //     int temp = *it1;
+    //     it2 = it1;
+    //     while (it2 != arr.begin() && *(std::prev(it2)) > temp) {
+    //         *it2 = *(std::prev(it2));
+    //         --it2;
+    //     }
+    //     *it2 = temp;
+    // }
+}
+
+void PmergeMe::mergeInsertSortVector(std::vector<int>& arr) {
+    mergeInsertSort(arr);
+    // for (std::size_t i = 1; i < arr.size(); ++i) {
+    //     int temp = arr[i];
+    //     std::size_t j = i;
+    //     while (j > 0 && arr[j - 1] > temp) {
+    //         arr[j] = arr[j - 1];
+    //         --j;
+    //     }
+    //     arr[j] = temp;
+    // }
+}
+
+template <typename T>
+void PmergeMe::mergeInsertSort(T& arr) {
+    for (typename T::iterator it1 = ++arr.begin(); it1 != arr.end(); ++it1) {
         int temp = *it1;
-        it2 = it1;
+        typename T::iterator it2 = it1;
         while (it2 != arr.begin() && *(std::prev(it2)) > temp) {
             *it2 = *(std::prev(it2));
             --it2;
@@ -158,26 +202,14 @@ void PmergeMe::mergeInsertSortList(std::list<int>& arr) {
     }
 }
 
-void PmergeMe::mergeInsertSortVector(std::vector<int>& arr) {
-    for (std::size_t i = 1; i < arr.size(); ++i) {
-        int temp = arr[i];
-        std::size_t j = i;
-        while (j > 0 && arr[j - 1] > temp) {
-            arr[j] = arr[j - 1];
-            --j;
-        }
-        arr[j] = temp;
-    }
-}
-
-// Fonction de pairage (Pairing)
-void PmergeMe::pairing(std::list<int>& inputList, std::list<int>& sortedSubList, std::list<int>& unsortedSubList) {
-    std::list<int>::iterator it = inputList.begin();
+template <typename Container>
+void PmergeMe::pairing(Container& inputList, Container& sortedSubList, Container& unsortedSubList) {
+    typename Container::iterator it = inputList.begin();
     while (it != inputList.end()) {
-        int first = *it;
+        typename Container::value_type first = *it;
         ++it;
         if (it != inputList.end()) {
-            int second = *it;
+            typename Container::value_type second = *it;
             ++it;
             if (first > second) {
                 sortedSubList.push_back(first);
@@ -192,24 +224,24 @@ void PmergeMe::pairing(std::list<int>& inputList, std::list<int>& sortedSubList,
     }
 }
 
-// Tri récursif (Recursive Sort)
-void PmergeMe::recursiveSort(std::list<int>& sortedSubList) {
+template <typename Container>
+void PmergeMe::recursiveSort(Container& sortedSubList) {
     if (sortedSubList.size() <= 1) {
         return;
     }
 
-    std::list<int>::iterator middle = sortedSubList.begin();
+    typename Container::iterator middle = sortedSubList.begin();
     std::advance(middle, sortedSubList.size() / 2);
 
-    std::list<int> left(sortedSubList.begin(), middle);
-    std::list<int> right(middle, sortedSubList.end());
+    Container left(sortedSubList.begin(), middle);
+    Container right(middle, sortedSubList.end());
 
     recursiveSort(left);
     recursiveSort(right);
 
     sortedSubList.clear();
-    std::list<int>::iterator itLeft = left.begin();
-    std::list<int>::iterator itRight = right.begin();
+    typename Container::iterator itLeft = left.begin();
+    typename Container::iterator itRight = right.begin();
 
     while (itLeft != left.end() && itRight != right.end()) {
         if (*itLeft < *itRight) {
@@ -231,16 +263,17 @@ void PmergeMe::recursiveSort(std::list<int>& sortedSubList) {
     }
 }
 
-// Insertion par recherche binaire (Binary Search Insertion)
-void PmergeMe::binarySearchInsertion(std::list<int>& sortedSubList, std::list<int>& unsortedSubList) {
-    for (std::list<int>::iterator it = unsortedSubList.begin(); it != unsortedSubList.end(); ++it) {
-        int element = *it;
+template <typename Container>
+void PmergeMe::binarySearchInsertion(Container& sortedSubList, Container& unsortedSubList) {
+    typename Container::iterator it;
+    for (it = unsortedSubList.begin(); it != unsortedSubList.end(); ++it) {
+        typename Container::value_type element = *it;
 
-        std::list<int>::iterator low = sortedSubList.begin();
-        std::list<int>::iterator high = sortedSubList.end();
+        typename Container::iterator low = sortedSubList.begin();
+        typename Container::iterator high = sortedSubList.end();
 
         while (low != high) {
-            std::list<int>::iterator mid = low;
+            typename Container::iterator mid = low;
             std::advance(mid, std::distance(low, high) / 2);
 
             if (*mid < element) {
@@ -254,18 +287,23 @@ void PmergeMe::binarySearchInsertion(std::list<int>& sortedSubList, std::list<in
     }
 }
 
-// Fonction principale Ford-Johnson Sort
-void PmergeMe::fordJohnsonSort(std::vector<int>& vec) {
-    if (vec.size() <= 1) return;
 
-    std::list<int> inputList(vec.begin(), vec.end());
-    std::list<int> sortedSubList;
-    std::list<int> unsortedSubList;
+// // My main Ford-Johnson Sort function
+template <typename Container>
+void PmergeMe::fordJohnsonSort(Container& container) {
+    if (container.size() <= 1) return;
+
+    typedef typename Container::value_type ValueType;  // Type des éléments dans le conteneur
+
+    // Conversion du conteneur en liste pour le tri
+    std::list<ValueType> inputList(container.begin(), container.end());
+    std::list<ValueType> sortedSubList;
+    std::list<ValueType> unsortedSubList;
 
     pairing(inputList, sortedSubList, unsortedSubList);
     recursiveSort(sortedSubList);
     binarySearchInsertion(sortedSubList, unsortedSubList);
 
-    // Reconversion de la liste en vecteur
-    vec.assign(sortedSubList.begin(), sortedSubList.end());
+    // Reconversion de la liste en conteneur d'origine
+    container.assign(sortedSubList.begin(), sortedSubList.end());
 }
