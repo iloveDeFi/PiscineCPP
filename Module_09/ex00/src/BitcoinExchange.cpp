@@ -6,7 +6,7 @@
 /*   By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 17:42:00 by bbessard          #+#    #+#             */
-/*   Updated: 2024/08/16 19:00:33 by bbessard         ###   ########.fr       */
+/*   Updated: 2024/09/09 14:11:26 by bbessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,12 +155,32 @@ void btc::printData() const {
     }
 }
 
+// format example 2011-01-32
 int btc::dateChecker(const std::string& date) const {
-    if (_exchangeRates.find(date) != _exchangeRates.end()) {
-        return 0;
-    } else {
+    float day, month, year;
+
+    std::string yearStr = date.substr(0, 4);
+    year = strtof(yearStr.c_str(), NULL);
+    if (year < 2009) 
         return -1;
-    }
+    else if (year > 2022)
+        return -2;
+
+    std::string monthStr = date.substr(5, 2);
+    month = strtof(monthStr.c_str(), NULL);
+    if (month < 1)
+        return -3;
+    else if (month > 12)
+        return -4;
+
+    std::string dayStr = date.substr(8, 2);
+    day = strtof(dayStr.c_str(), NULL);
+    if (day < 1)
+        return -5;
+    else if (day > 31)
+        return -6;
+
+    return 0;
 }
 
  const std::map<std::string, float>& btc::getExchangeRates() const {

@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bat <bat@student.42.fr>                    +#+  +:+       +#+         #
+#    By: bbessard <bbessard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 23:37:18 by bat               #+#    #+#              #
-#    Updated: 2024/08/17 11:45:43 by bat              ###   ########.fr        #
+#    Updated: 2024/09/09 14:14:53 by bbessard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Nom de l'exécutable
-EXEC = PmergeMe
+EXEC = RPN
 
 # Compilateur
 CC = g++
